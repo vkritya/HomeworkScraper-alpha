@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128"
+   height="128"
+   viewBox="0 0 33.866666 33.866668"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="settings_icon.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="38.172682"
+     inkscape:cy="57.060885"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-bbox="false"
+     units="px"
+     inkscape:window-width="1600"
+     inkscape:window-height="1137"
+     inkscape:window-x="1016"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid832"
+       spacingx="0.21166667"
+       spacingy="0.21166667"
+       empspacing="4"
+       dotted="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-263.13332)">
+    <path
+       style="fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.99999997;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 59.199219,40 v 8.757812 a 16.000001,16.000001 0 0 0 -2.591797,1.060547 l -6.183594,-6.183593 -6.789062,6.789062 6.1875,6.1875 a 16.000001,16.000001 0 0 0 -1.080078,2.587891 H 40 v 9.601562 h 8.757812 a 16.000001,16.000001 0 0 0 1.060547,2.591797 l -6.183593,6.183594 6.789062,6.789062 6.1875,-6.1875 a 16.000001,16.000001 0 0 0 2.587891,1.080078 V 88 h 9.601562 v -8.757812 a 16.000001,16.000001 0 0 0 2.591797,-1.060547 l 6.183594,6.183593 6.789062,-6.789062 -6.1875,-6.1875 a 16.000001,16.000001 0 0 0 1.080078,-2.587891 H 88 v -9.601562 h -8.757812 a 16.000001,16.000001 0 0 0 -1.060547,-2.591797 l 6.183593,-6.183594 -6.789062,-6.789062 -6.1875,6.1875 A 16.000001,16.000001 0 0 0 68.800781,48.742188 V 40 Z M 64,56 a 8.0000004,8.0000004 0 0 1 8,8 8.0000004,8.0000004 0 0 1 -8,8 8.0000004,8.0000004 0 0 1 -8,-8 8.0000004,8.0000004 0 0 1 8,-8 z"
+       transform="matrix(0.26458334,0,0,0.26458334,0,263.13332)"
+       id="path4611"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\seettings_icon_x32.png"
+       inkscape:export-xdpi="64.000008"
+       inkscape:export-ydpi="64.000008" />
+  </g>
+</svg>
