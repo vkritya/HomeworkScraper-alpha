@@ -11,7 +11,61 @@ Imports Newtonsoft.Json
 '
 '
 '
-Namespace eKreta
+Class eKreta
+    Dim myInstitute As Institute
+
+    Private myLessons As Dictionary(Of ULong, Lesson)
+    Function AddLessons(lessons As List(Of Lesson)) As List(Of Lesson)
+        For Each lesson In lessons
+            If myLessons.ContainsKey(lesson.LessonID) Then
+                myLessons.Remove(lesson.LessonID)
+            End If
+            myLessons.Add(lesson.LessonID, lesson)
+        Next
+        Return myLessons.Values.ToList
+    End Function
+    Function getLessons() As List(Of Lesson)
+        Return myLessons.Values.ToList
+    End Function
+
+    Private myHomeworks As Dictionary(Of ULong, Homework)
+    Function AddHomeworks(homeworks As List(Of Homework)) As List(Of Homework)
+        For Each homework In homeworks
+            If myHomeworks.ContainsKey(homework.ID) Then
+                myHomeworks.Remove(homework.ID)
+            End If
+            myHomeworks.Add(homework.ID, homework)
+        Next
+        Return myHomeworks.Values.ToList
+    End Function
+    Function getHomeworks() As List(Of Homework)
+        Return myHomeworks.Values.ToList
+    End Function
+
+    Private myMessages As Dictionary(Of ULong, Message)
+    Function AddMessages(messages As List(Of Message)) As List(Of Message)
+        For Each message In messages
+            If myMessages.ContainsKey(message.ID) Then
+                myMessages.Remove(message.ID)
+            End If
+            myMessages.Add(message.ID, message)
+        Next
+        Return myMessages.Values.ToList
+    End Function
+    Function getMessages() As List(Of Message)
+        Return myMessages.Values.ToList
+    End Function
+
+
+
+
+
+End Class
+
+
+
+
+Namespace eKretaAA
     Module eKretaFunctions
 
         Private Const API_KEY = "7856d350-1fda-45f5-822d-e1a2f3f1acf0"
@@ -24,26 +78,30 @@ Namespace eKreta
 
         Public myInstituteID = 0
 
-        Private Structure Tipus
-            Dim azonosito As ULong
-            Dim kod As String
-            Dim rovidNev As String
-            Dim nev As String
-            Dim leiras As String
-        End Structure
+        'Runtime Only
+        Private myUsername As String
+        Private myPassword As String
+
+        Private Sub setRegistry(key As String, value As Object, kind As Microsoft.Win32.RegistryValueKind)
+            My.Computer.Registry.CurrentUser.CreateSubKey("Software\HomeWorkScraper")
+            My.Computer.Registry.SetValue(REGISTRY_KEY, key, value, kind)
+        End Sub
+
+        Private Function getRegistry(key As String) As Object
+            Return My.Computer.Registry.GetValue(REGISTRY_KEY, key, Nothing)
+        End Function
 
         Async Function Initialize(myMainForm As MainForm) As Task
             'HTTPS
             ServicePointManager.ServerCertificateValidationCallback = New Security.RemoteCertificateValidationCallback(Function(sender As Object, certification As System.Security.Cryptography.X509Certificates.X509Certificate, chain As System.Security.Cryptography.X509Certificates.X509Chain, sslPolicyErrors As Security.SslPolicyErrors) True)
 
             'instituteId
-            myInstituteID = My.Computer.Registry.GetValue(REGISTRY_KEY, "eKreta_InstituteId", Nothing)
+            myInstituteID = getRegistry("eKreta_InstituteId")
             If myInstituteID Is Nothing Then
                 Dim myInstitutePicker As New InstitutePicker
                 If myInstitutePicker.ShowDialog = DialogResult.OK Then
                     myInstituteID = myInstitutePicker.InstituteId
-                    My.Computer.Registry.CurrentUser.CreateSubKey("Software\HomeWorkScraper")
-                    My.Computer.Registry.SetValue(REGISTRY_KEY, "eKreta_InstituteId", myInstituteID, Microsoft.Win32.RegistryValueKind.DWord)
+                    setRegistry("eKreta_InstituteId", myInstituteID, Microsoft.Win32.RegistryValueKind.DWord)
                 End If
             End If
 
@@ -66,7 +124,7 @@ Namespace eKreta
             End If
         End Function
 
-        Async Function myGETRequest(Of Type)(url As String, Headers As Dictionary(Of String, String), Optional gzip As Boolean = False) As Task(Of Type)
+        Private Async Function myGETRequest(Of Type)(url As String, Headers As Dictionary(Of String, String), Optional gzip As Boolean = False) As Task(Of Type)
             Dim myHttpWebRequest As HttpWebRequest = WebRequest.Create(url)
 
             For Each e In Headers
@@ -83,7 +141,7 @@ Namespace eKreta
             Return JsonConvert.DeserializeObject(Of Type)(str, New JsonSerializerSettings With {.NullValueHandling = NullValueHandling.Ignore})
         End Function
 
-        Function myPOSTRequest(Of Type)(Url As String, body As String, Optional contentType As String = Nothing, Optional Headers As Dictionary(Of String, String) = Nothing) As Type
+        Private Function myPOSTRequest(Of Type)(Url As String, body As String, Optional contentType As String = Nothing, Optional Headers As Dictionary(Of String, String) = Nothing) As Type
             Dim bodyBytes = Text.Encoding.UTF8.GetBytes(body)
 
             Dim myHttpWebRequest As HttpWebRequest = WebRequest.Create(Url)
@@ -103,21 +161,6 @@ Namespace eKreta
             myHttpWebRequest.GetRequestStream.Close()
 
             Dim str = New IO.StreamReader(myHttpWebRequest.GetResponse.GetResponseStream).ReadToEnd
-            Return JsonConvert.DeserializeObject(Of Type)(str, New JsonSerializerSettings With {.NullValueHandling = NullValueHandling.Ignore})
-        End Function
-
-        Async Function myPOSTRequest2(Of Type)(url As String, body As String, Optional contentType As String = Nothing, Optional headers As Dictionary(Of String, String) = Nothing) As Task(Of Type)
-            Dim myHttpRequestMessage = New Http.HttpRequestMessage(Http.HttpMethod.Post, url)
-            myHttpRequestMessage.Content = New Http.StringContent(body, Text.Encoding.UTF8, "application/x-www-form-urlencoded")
-            myHttpRequestMessage.Headers.Add("Accept", "application/json")
-            myHttpRequestMessage.Headers.Add("Accept-Encoding", "gzip")
-            myHttpRequestMessage.Headers.Add("Connection", "keep-alive")
-            myHttpRequestMessage.Headers.Add("User-Agent", "Kreta.Ellenorzo/2.9.10.2020031602 (Android; WAS-LX1 8.0.0)")
-            'Add bearer
-            Dim myHttpClient = New Http.HttpClient()
-            Dim myHttpResponseMessage = Await myHttpClient.SendAsync(myHttpRequestMessage)
-            Dim str = New IO.StreamReader(Await myHttpResponseMessage.Content.ReadAsStreamAsync).ReadToEnd
-
             Return JsonConvert.DeserializeObject(Of Type)(str, New JsonSerializerSettings With {.NullValueHandling = NullValueHandling.Ignore})
         End Function
 
@@ -169,16 +212,26 @@ Namespace eKreta
 
 #End Region
 
+#Region "MobileAPI"
+
+        Private Structure Tipus
+            Dim azonosito As ULong
+            Dim kod As String
+            Dim rovidNev As String
+            Dim nev As String
+            Dim leiras As String
+        End Structure
+
 #Region "Token"
 
         Function getAccessToken(instituteURL As String, instituteID As String) As String
             If DateTime.UtcNow > myTokenValid Then
                 If myRefreshToken = "" Then
-                    Dim myLoginForm As New LoginForm("Bejelentkezés: e-Kréta")
+                    Dim myEKretaLoginForm As New EKretaLoginForm("Bejelentkezés: e-Kréta")
                     Do While True
-                        myLoginForm.PasswordTextBox.Text = ""
-                        If myLoginForm.ShowDialog = DialogResult.OK Then
-                            myToken = getNewAccessToken(instituteURL, instituteID, myLoginForm.Username, myLoginForm.Password)
+                        myEKretaLoginForm.PasswordTextBox.Text = ""
+                        If myEKretaLoginForm.ShowDialog = DialogResult.OK Then
+                            myToken = getNewAccessToken(instituteURL, instituteID, myEKretaLoginForm.Username, myEKretaLoginForm.Password)
                             If myToken = "" Then
                                 Continue Do
                             End If
@@ -186,7 +239,7 @@ Namespace eKreta
                         End If
                         Exit Do
                     Loop
-                    myLoginForm.Dispose()
+                    myEKretaLoginForm.Dispose()
                 Else
                     myToken = getNewAccessToken(instituteURL, instituteID, myRefreshToken)
                     My.Computer.Registry.SetValue(REGISTRY_KEY, "eKreta_RefreshToken", myRefreshToken)
@@ -285,8 +338,8 @@ Namespace eKreta
             Dim lesson As Lesson
             For Each lessonResponse In Await myLessonResponseList
                 lesson.ClassRoom = lessonResponse.ClassRoom
-                lesson.StartTime = eKreta.Format.getDateTime(lessonResponse.StartTime)
-                lesson.EndTime = eKreta.Format.getDateTime(lessonResponse.EndTime)
+                lesson.StartTime = eKretaAA.Format.getDateTime(lessonResponse.StartTime)
+                lesson.EndTime = eKretaAA.Format.getDateTime(lessonResponse.EndTime)
                 lesson.IsTanuloHaziFeladatEnabled = lessonResponse.IsTanuloHaziFeladatEnabled
                 lesson.LessonID = lessonResponse.LessonID
                 lesson.SubjectName = lessonResponse.Nev
@@ -380,13 +433,13 @@ Namespace eKreta
             myHomework.Oraszam = teacherHomeworkResponse.Oraszam
             myHomework.TanitasiOraId = teacherHomeworkResponse.TanitasiOraId
             myHomework.Szoveg = teacherHomeworkResponse.Szoveg
-            myHomework.FeladasDatuma = eKreta.Format.getDateTime(teacherHomeworkResponse.FeladasDatuma)
-            myHomework.Hatarido = eKreta.Format.getDateTime(teacherHomeworkResponse.Hatarido)
+            myHomework.FeladasDatuma = eKretaAA.Format.getDateTime(teacherHomeworkResponse.FeladasDatuma)
+            myHomework.Hatarido = eKretaAA.Format.getDateTime(teacherHomeworkResponse.Hatarido)
             myHomework.IsTanuloHaziFeladatEnabled = teacherHomeworkResponse.IsTanuloHaziFeladatEnabled
 
             For Each myStudentHomeworkResponse In studentHomeworkResponseList
                 Dim myStudentHomework As StudentHomework
-                myStudentHomework.FeladasDatuma = eKreta.Format.getDateTime(myStudentHomeworkResponse.FeladasDatuma)
+                myStudentHomework.FeladasDatuma = eKretaAA.Format.getDateTime(myStudentHomeworkResponse.FeladasDatuma)
                 myStudentHomework.FeladatSzovege = myStudentHomeworkResponse.FeladatSzovege
                 myStudentHomework.Id = myStudentHomeworkResponse.Id
                 myStudentHomework.RogzitoId = myStudentHomeworkResponse.RogzitoId
@@ -402,7 +455,7 @@ Namespace eKreta
             Dim myStudentHomeworkPayload As StudentHomeworkPayload
             myStudentHomeworkPayload.FeladatSzovege = szoveg
             myStudentHomeworkPayload.Hatarido = homework.Hatarido
-            myStudentHomeworkPayload.OraDate = eKreta.Format.formatDateTime(homework.FeladasDatuma)
+            myStudentHomeworkPayload.OraDate = eKretaAA.Format.formatDateTime(homework.FeladasDatuma)
             myStudentHomeworkPayload.OraId = homework.TanitasiOraId
             myStudentHomeworkPayload.OraType = "TanitasiOra"
             myStudentHomeworkPayload.TanarHaziFeladatId = homework.ID
@@ -459,7 +512,7 @@ Namespace eKreta
                 myMessage.MessageBody = myMessageResponse.uzenet.szoveg
                 myMessage.MessageID = myMessageResponse.uzenet.azonosito
                 myMessage.MessageSubject = myMessageResponse.uzenet.targy
-                myMessage.myDate = eKreta.Format.getDateTime(myMessageResponse.uzenet.kuldesDatum)
+                myMessage.myDate = eKretaAA.Format.getDateTime(myMessageResponse.uzenet.kuldesDatum)
                 myMessage.SenderName = myMessageResponse.uzenet.feladoNev
                 myMessage.SenderTitle = myMessageResponse.uzenet.feladoTitulus
 
@@ -492,5 +545,12 @@ Namespace eKreta
         End Function
 #End Region
 
+#End Region
+
+#Region "WebAPI"
+
+
+
+#End Region
     End Module
 End Namespace

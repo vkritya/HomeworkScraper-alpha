@@ -1,4 +1,4 @@
-ÔªøPublic Class LoginForm
+Public Class EKretaLoginForm
 
     Property Password As String
     Property Username As String
@@ -10,9 +10,9 @@
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         If UsernameTextBox.Text = "" Then
-            MsgBox("√çrd be a felhaszn√°l√≥neved!")
+            MsgBox("Õrd be a felhaszn·lÛneved!")
         ElseIf PasswordTextBox.Text = "" Then
-            MsgBox("√çrd be a jelszavad!")
+            MsgBox("Õrd be a jelszavad!")
         Else
             Password = PasswordTextBox.Text
             Username = UsernameTextBox.Text

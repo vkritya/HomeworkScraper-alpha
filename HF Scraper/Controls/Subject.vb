@@ -29,8 +29,8 @@
         setLabel(SubjectNameLabel, myLesson.SubjectName)
         setLabel(TeacherLabel, myLesson.Teacher)
         setLabel(ClassRoomLabel, myLesson.ClassRoom)
-        setLabel(StartTimeLabel, eKreta.Format.buildTime(myLesson.StartTime))
-        setLabel(EndTimeLabel, eKreta.Format.buildTime(myLesson.EndTime))
+        setLabel(StartTimeLabel, eKretaAA.Format.buildTime(myLesson.StartTime))
+        setLabel(EndTimeLabel, eKretaAA.Format.buildTime(myLesson.EndTime))
         myHomeworkIcon.Visible = (myLesson.TeacherHomeworkID <> 0)
     End Sub
 

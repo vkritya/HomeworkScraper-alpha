@@ -77,6 +77,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -99,6 +100,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\HomeworkDetail.Designer.vb">
+      <DependentUpon>HomeworkDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HomeworkDetail.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\HomeworkIcon.Designer.vb">
       <DependentUpon>HomeworkIcon.vb</DependentUpon>
     </Compile>
@@ -117,16 +124,34 @@
     <Compile Include="Controls\SchoolWeek.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\StudentHomeworkView.Designer.vb">
+      <DependentUpon>StudentHomeworkView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StudentHomeworkView.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\Subject.Designer.vb">
       <DependentUpon>Subject.vb</DependentUpon>
     </Compile>
     <Compile Include="Controls\Subject.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\TimeSpanPicker.Designer.vb">
+      <DependentUpon>TimeSpanPicker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TimeSpanPicker.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Forms\InstitutePicker.Designer.vb">
       <DependentUpon>InstitutePicker.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\InstitutePicker.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.vb">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MainForm.vb">
@@ -136,15 +161,16 @@
       <DependentUpon>MainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoginForm.Designer.vb">
-      <DependentUpon>LoginForm.vb</DependentUpon>
+    <Compile Include="Forms\EKretaLoginForm.Designer.vb">
+      <DependentUpon>EKretaLoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginForm.vb">
+    <Compile Include="Forms\EKretaLoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\eKreta\eKretaFormatters.vb" />
     <Compile Include="Modules\eKreta\eKretaFunctions.vb" />
     <Compile Include="Modules\eKreta\eKretaStructures.vb" />
+    <Compile Include="Modules\GlobalConstants.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -162,6 +188,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\HomeworkDetail.resx">
+      <DependentUpon>HomeworkDetail.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\HomeworkIcon.resx">
       <DependentUpon>HomeworkIcon.vb</DependentUpon>
     </EmbeddedResource>
@@ -174,14 +203,20 @@
     <EmbeddedResource Include="Controls\Subject.resx">
       <DependentUpon>Subject.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TimeSpanPicker.resx">
+      <DependentUpon>TimeSpanPicker.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\InstitutePicker.resx">
       <DependentUpon>InstitutePicker.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
-      <DependentUpon>LoginForm.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\EKretaLoginForm.resx">
+      <DependentUpon>EKretaLoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -220,6 +255,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\settings_icon_x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loading.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

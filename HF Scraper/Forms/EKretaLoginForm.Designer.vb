@@ -1,5 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class LoginForm
+<Global.System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726")> _
+Partial Class EKretaLoginForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -13,6 +14,12 @@ Partial Class LoginForm
             MyBase.Dispose(disposing)
         End Try
     End Sub
+    Friend WithEvents UsernameLabel As System.Windows.Forms.Label
+    Friend WithEvents PasswordLabel As System.Windows.Forms.Label
+    Friend WithEvents UsernameTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents PasswordTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents OK As System.Windows.Forms.Button
+    Friend WithEvents Cancel As System.Windows.Forms.Button
 
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
@@ -22,30 +29,38 @@ Partial Class LoginForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Cancel = New System.Windows.Forms.Button()
-        Me.OK = New System.Windows.Forms.Button()
-        Me.PasswordTextBox = New System.Windows.Forms.TextBox()
-        Me.UsernameTextBox = New System.Windows.Forms.TextBox()
-        Me.PasswordLabel = New System.Windows.Forms.Label()
         Me.UsernameLabel = New System.Windows.Forms.Label()
+        Me.PasswordLabel = New System.Windows.Forms.Label()
+        Me.UsernameTextBox = New System.Windows.Forms.TextBox()
+        Me.PasswordTextBox = New System.Windows.Forms.TextBox()
+        Me.OK = New System.Windows.Forms.Button()
+        Me.Cancel = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Cancel
+        'UsernameLabel
         '
-        Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.Location = New System.Drawing.Point(132, 98)
-        Me.Cancel.Name = "Cancel"
-        Me.Cancel.Size = New System.Drawing.Size(94, 23)
-        Me.Cancel.TabIndex = 11
-        Me.Cancel.Text = "&Cancel"
+        Me.UsernameLabel.Location = New System.Drawing.Point(9, 6)
+        Me.UsernameLabel.Name = "UsernameLabel"
+        Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
+        Me.UsernameLabel.TabIndex = 0
+        Me.UsernameLabel.Text = "Felhasználónév"
+        Me.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'OK
+        'PasswordLabel
         '
-        Me.OK.Location = New System.Drawing.Point(12, 98)
-        Me.OK.Name = "OK"
-        Me.OK.Size = New System.Drawing.Size(94, 23)
-        Me.OK.TabIndex = 10
-        Me.OK.Text = "&OK"
+        Me.PasswordLabel.Location = New System.Drawing.Point(9, 49)
+        Me.PasswordLabel.Name = "PasswordLabel"
+        Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
+        Me.PasswordLabel.TabIndex = 2
+        Me.PasswordLabel.Text = "Jelszó"
+        Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'UsernameTextBox
+        '
+        Me.UsernameTextBox.Location = New System.Drawing.Point(11, 29)
+        Me.UsernameTextBox.Name = "UsernameTextBox"
+        Me.UsernameTextBox.Size = New System.Drawing.Size(215, 20)
+        Me.UsernameTextBox.TabIndex = 1
         '
         'PasswordTextBox
         '
@@ -53,32 +68,24 @@ Partial Class LoginForm
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(215, 20)
-        Me.PasswordTextBox.TabIndex = 9
+        Me.PasswordTextBox.TabIndex = 3
         '
-        'UsernameTextBox
+        'OK
         '
-        Me.UsernameTextBox.Location = New System.Drawing.Point(11, 29)
-        Me.UsernameTextBox.Name = "UsernameTextBox"
-        Me.UsernameTextBox.Size = New System.Drawing.Size(215, 20)
-        Me.UsernameTextBox.TabIndex = 7
+        Me.OK.Location = New System.Drawing.Point(12, 98)
+        Me.OK.Name = "OK"
+        Me.OK.Size = New System.Drawing.Size(94, 23)
+        Me.OK.TabIndex = 4
+        Me.OK.Text = "&OK"
         '
-        'PasswordLabel
+        'Cancel
         '
-        Me.PasswordLabel.Location = New System.Drawing.Point(9, 49)
-        Me.PasswordLabel.Name = "PasswordLabel"
-        Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
-        Me.PasswordLabel.TabIndex = 8
-        Me.PasswordLabel.Text = "Jelszó"
-        Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'UsernameLabel
-        '
-        Me.UsernameLabel.Location = New System.Drawing.Point(9, 6)
-        Me.UsernameLabel.Name = "UsernameLabel"
-        Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
-        Me.UsernameLabel.TabIndex = 6
-        Me.UsernameLabel.Text = "Felhasználónév"
-        Me.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel.Location = New System.Drawing.Point(132, 98)
+        Me.Cancel.Name = "Cancel"
+        Me.Cancel.Size = New System.Drawing.Size(94, 23)
+        Me.Cancel.TabIndex = 5
+        Me.Cancel.Text = "&Cancel"
         '
         'LoginForm
         '
@@ -106,10 +113,4 @@ Partial Class LoginForm
 
     End Sub
 
-    Friend WithEvents Cancel As Button
-    Friend WithEvents OK As Button
-    Friend WithEvents PasswordTextBox As TextBox
-    Friend WithEvents UsernameTextBox As TextBox
-    Friend WithEvents PasswordLabel As Label
-    Friend WithEvents UsernameLabel As Label
 End Class

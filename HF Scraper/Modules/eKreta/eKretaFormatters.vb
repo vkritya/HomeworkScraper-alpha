@@ -1,4 +1,4 @@
-﻿Namespace eKreta.Format
+﻿Namespace eKretaAA.Format
     Module Format
 #Region "DateTime"
         Function getDateTime(eKretaTime As String) As DateTime
@@ -7,7 +7,7 @@
                                 CInt(eKretaTime.Substring(8, 2)),
                                 CInt(eKretaTime.Substring(11, 2)),
                                 CInt(eKretaTime.Substring(14, 2)),
-                                CInt(eKretaTime.Substring(17)),
+                                CInt(eKretaTime.Substring(17, 2)),
                                 DateTimeKind.Local)
         End Function
         Function buildDate(dateTime As DateTime) As String

@@ -28,17 +28,19 @@ Partial Class InstitutePicker
         '
         'InstituteListBox
         '
-        Me.InstituteListBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.InstituteListBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.InstituteListBox.FormattingEnabled = True
-        Me.InstituteListBox.Location = New System.Drawing.Point(12, 1)
+        Me.InstituteListBox.Location = New System.Drawing.Point(12, 12)
         Me.InstituteListBox.Name = "InstituteListBox"
         Me.InstituteListBox.Size = New System.Drawing.Size(370, 21)
         Me.InstituteListBox.TabIndex = 1
         '
         'OKButton
         '
-        Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.OKButton.Location = New System.Drawing.Point(12, 28)
+        Me.OKButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.OKButton.Location = New System.Drawing.Point(12, 39)
         Me.OKButton.Name = "OKButton"
         Me.OKButton.Size = New System.Drawing.Size(370, 23)
         Me.OKButton.TabIndex = 2
