@@ -1,9 +1,10 @@
 ﻿Public Class Subject
-    Private myLesson As Lesson
+    Private myLesson As Lesson? = Nothing
     Private myMainForm As MainForm
 
     'For Blanks
-    Public Sub New()
+    Public Sub New(mainForm As MainForm)
+        myMainForm = mainForm
         InitializeComponent()
     End Sub
 
@@ -29,8 +30,8 @@
         setLabel(SubjectNameLabel, myLesson.SubjectName)
         setLabel(TeacherLabel, myLesson.Teacher)
         setLabel(ClassRoomLabel, myLesson.ClassRoom)
-        setLabel(StartTimeLabel, eKretaAA.Format.buildTime(myLesson.StartTime))
-        setLabel(EndTimeLabel, eKretaAA.Format.buildTime(myLesson.EndTime))
+        setLabel(StartTimeLabel, myLesson.StartTime.ToString("hh:mm"))
+        setLabel(EndTimeLabel, myLesson.EndTime.ToString("hh:mm"))
         myHomeworkIcon.Visible = (myLesson.TeacherHomeworkID <> 0)
     End Sub
 
@@ -44,8 +45,10 @@
     End Sub
 
     Private Sub ClickedHandler() Handles Me.Click, ClassRoomLabel.Click, EndTimeLabel.Click, myHomeworkIcon.Click, myHomeworkIcon.IsFinishedClicked, StartTimeLabel.Click, SubjectNameLabel.Click, TeacherLabel.Click
-        If myLesson.TeacherHomeworkID <> 0 And myMainForm IsNot Nothing Then
-            myMainForm.OpenHomeworkDetails(Me, myLesson.TeacherHomeworkID)
+        If myLesson.HasValue AndAlso myLesson.Value.TeacherHomeworkID <> 0 Then
+            myMainForm.OpenHomeworkDetails(Me, myLesson.Value.TeacherHomeworkID)
+        Else
+            myMainForm.BlankHomeworkDetails()
         End If
     End Sub
 

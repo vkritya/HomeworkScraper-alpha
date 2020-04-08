@@ -30,6 +30,7 @@ Partial Class SchoolWeek
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AutoScroll = True
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(0)
         Me.Size = New System.Drawing.Size(769, 500)

@@ -35,6 +35,7 @@ Partial Class EKretaLoginForm
         Me.PasswordTextBox = New System.Windows.Forms.TextBox()
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
+        Me.SaveLoginCheckBox = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'UsernameLabel
@@ -72,7 +73,7 @@ Partial Class EKretaLoginForm
         '
         'OK
         '
-        Me.OK.Location = New System.Drawing.Point(12, 98)
+        Me.OK.Location = New System.Drawing.Point(12, 121)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(94, 23)
         Me.OK.TabIndex = 4
@@ -81,19 +82,29 @@ Partial Class EKretaLoginForm
         'Cancel
         '
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.Location = New System.Drawing.Point(132, 98)
+        Me.Cancel.Location = New System.Drawing.Point(132, 121)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(94, 23)
         Me.Cancel.TabIndex = 5
         Me.Cancel.Text = "&Cancel"
         '
-        'LoginForm
+        'SaveLoginCheckBox
+        '
+        Me.SaveLoginCheckBox.Location = New System.Drawing.Point(12, 98)
+        Me.SaveLoginCheckBox.Name = "SaveLoginCheckBox"
+        Me.SaveLoginCheckBox.Size = New System.Drawing.Size(173, 17)
+        Me.SaveLoginCheckBox.TabIndex = 0
+        Me.SaveLoginCheckBox.Text = "Bejelentkezési adatok mentése"
+        Me.SaveLoginCheckBox.UseVisualStyleBackColor = True
+        '
+        'EKretaLoginForm
         '
         Me.AcceptButton = Me.OK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
-        Me.ClientSize = New System.Drawing.Size(239, 129)
+        Me.ClientSize = New System.Drawing.Size(239, 152)
+        Me.Controls.Add(Me.SaveLoginCheckBox)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
         Me.Controls.Add(Me.PasswordTextBox)
@@ -103,14 +114,15 @@ Partial Class EKretaLoginForm
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "LoginForm"
+        Me.Name = "EKretaLoginForm"
         Me.ShowInTaskbar = False
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Bejelentkezés: ####"
+        Me.Text = "Bejelentkezés: e-Kréta"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
+    Friend WithEvents SaveLoginCheckBox As CheckBox
 End Class

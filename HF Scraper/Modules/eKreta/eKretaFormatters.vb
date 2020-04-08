@@ -1,4 +1,4 @@
-﻿Namespace eKretaAA.Format
+﻿Namespace eKreta.Format
     Module Format
 #Region "DateTime"
         Function getDateTime(eKretaTime As String) As DateTime

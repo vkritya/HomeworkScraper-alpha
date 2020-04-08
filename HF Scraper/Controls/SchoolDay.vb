@@ -28,7 +28,7 @@
     End Sub
 
     Private Sub addBlank(length As ULong)
-        Dim mySubject As New Subject
+        Dim mySubject As New Subject(myMainForm)
         Me.Controls.Add(mySubject)
         mySubject.setBlank(length)
     End Sub

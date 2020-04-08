@@ -167,6 +167,7 @@
     <Compile Include="Forms\EKretaLoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="Modules\eKreta\eKretaFormatters.vb" />
     <Compile Include="Modules\eKreta\eKretaFunctions.vb" />
     <Compile Include="Modules\eKreta\eKretaStructures.vb" />
@@ -199,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SchoolWeek.resx">
       <DependentUpon>SchoolWeek.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\StudentHomeworkView.resx">
+      <DependentUpon>StudentHomeworkView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Subject.resx">
       <DependentUpon>Subject.vb</DependentUpon>
@@ -258,6 +262,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SchoolWeekBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_left_icon_x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_right_icon_x20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

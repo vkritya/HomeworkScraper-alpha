@@ -6,15 +6,20 @@
         InitializeComponent()
     End Sub
     'For Use
-    Public Sub New(mainForm As MainForm, lessons As List(Of Lesson))
+    Public Sub New(mainForm As Form)
         InitializeComponent()
-        Me.myMainForm = mainForm
-        setLessons(lessons)
+        myMainForm = TryCast(mainForm, MainForm)
     End Sub
 
     Private SchoolDays(4) As SchoolDay
 
     Sub setLessons(lessons As List(Of Lesson))
+        Me.AutoScroll = False
+        Me.VerticalScroll.Enabled = False
+        Me.HorizontalScroll.Enabled = False
+        Me.Controls.Clear()
+
+        Me.myMainForm = MainForm
         lessons = lessons.OrderBy(Function(e) e.StartTime).ToList
         Dim i As Integer
 
@@ -28,8 +33,9 @@
                 maxTime = lesson.EndTime
             End If
         Next
-        Me.MaximumSize = New Size(769, (maxTime.TimeOfDay - minTime.TimeOfDay).TotalMinutes * 2 + 4)
+        Me.MaximumSize = New Size(769, Math.Max((maxTime.TimeOfDay - minTime.TimeOfDay).TotalMinutes * 2 + 4, Me.Height))
         Do Until lessons.Count = 0
+            Application.DoEvents()
             If lessons.Count <= i + 1 OrElse lessons(i).StartTime.Day <> lessons(i + 1).StartTime.Day Then
                 addSchoolDay(minTime, maxTime, lessons.GetRange(0, i + 1).ToArray)
                 lessons.RemoveRange(0, i + 1)
@@ -37,13 +43,17 @@
             End If
             i += 1
         Loop
+        Me.VerticalScroll.Enabled = True
+        Me.HorizontalScroll.Enabled = True
+        Me.AutoScroll = True
     End Sub
     Private Sub addSchoolDay(minTime As Date, maxTime As Date, lessons() As Lesson)
         Dim index = lessons(0).StartTime.DayOfWeek - 1
 
-        SchoolDays(index) = New SchoolDay(myMainForm, minTime, maxTime, lessons)
+        SchoolDays(index) = (New SchoolDay(myMainForm, minTime, maxTime, lessons))
         Me.Controls.Add(SchoolDays(index))
         SchoolDays(index).Location = New Point(index * 150, 0)
+
     End Sub
 
     Private Sub ScrollSmearFix() Handles Me.Scroll
