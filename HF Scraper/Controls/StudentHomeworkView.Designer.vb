@@ -29,7 +29,7 @@ Partial Class StudentHomeworkView
         '
         'NameLabel
         '
-        Me.NameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
+        Me.NameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
         Me.NameLabel.Location = New System.Drawing.Point(1, 1)
         Me.NameLabel.Margin = New System.Windows.Forms.Padding(3)
         Me.NameLabel.Name = "NameLabel"
@@ -52,14 +52,18 @@ Partial Class StudentHomeworkView
         '
         'myWebBrowser
         '
+        Me.myWebBrowser.AllowWebBrowserDrop = False
         Me.myWebBrowser.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.myWebBrowser.IsWebBrowserContextMenuEnabled = False
         Me.myWebBrowser.Location = New System.Drawing.Point(4, 26)
         Me.myWebBrowser.MinimumSize = New System.Drawing.Size(20, 20)
         Me.myWebBrowser.Name = "myWebBrowser"
+        Me.myWebBrowser.ScriptErrorsSuppressed = True
         Me.myWebBrowser.ScrollBarsEnabled = False
         Me.myWebBrowser.Size = New System.Drawing.Size(349, 96)
         Me.myWebBrowser.TabIndex = 1
+        Me.myWebBrowser.WebBrowserShortcutsEnabled = False
         '
         'StudentHomeworkView
         '

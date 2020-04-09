@@ -45,7 +45,7 @@ Partial Class HomeworkDetail
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ContentWebBrowser.IsWebBrowserContextMenuEnabled = False
-        Me.ContentWebBrowser.Location = New System.Drawing.Point(0, 0)
+        Me.ContentWebBrowser.Location = New System.Drawing.Point(3, 0)
         Me.ContentWebBrowser.MinimumSize = New System.Drawing.Size(20, 20)
         Me.ContentWebBrowser.Name = "ContentWebBrowser"
         Me.ContentWebBrowser.Size = New System.Drawing.Size(344, 282)
@@ -121,7 +121,7 @@ Partial Class HomeworkDetail
         Me.SplitContainer1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.SplitContainer1.Cursor = System.Windows.Forms.Cursors.HSplit
         Me.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1
-        Me.SplitContainer1.Location = New System.Drawing.Point(3, 78)
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 78)
         Me.SplitContainer1.Name = "SplitContainer1"
         Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -136,7 +136,7 @@ Partial Class HomeworkDetail
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control
         Me.SplitContainer1.Panel2.Controls.Add(Me.StudentHomeworkFlowLayoutPanel)
         Me.SplitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default
-        Me.SplitContainer1.Size = New System.Drawing.Size(344, 590)
+        Me.SplitContainer1.Size = New System.Drawing.Size(350, 590)
         Me.SplitContainer1.SplitterDistance = 282
         Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 6
@@ -151,7 +151,7 @@ Partial Class HomeworkDetail
         Me.StudentHomeworkFlowLayoutPanel.AutoScroll = True
         Me.StudentHomeworkFlowLayoutPanel.Location = New System.Drawing.Point(0, 0)
         Me.StudentHomeworkFlowLayoutPanel.Name = "StudentHomeworkFlowLayoutPanel"
-        Me.StudentHomeworkFlowLayoutPanel.Size = New System.Drawing.Size(344, 300)
+        Me.StudentHomeworkFlowLayoutPanel.Size = New System.Drawing.Size(350, 302)
         Me.StudentHomeworkFlowLayoutPanel.TabIndex = 0
         '
         'SendButton

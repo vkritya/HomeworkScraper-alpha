@@ -1,15 +1,22 @@
 ﻿Public Class StudentHomeworkView
     Public Sub New(homework As StudentHomework, initialWidth As Integer)
         InitializeComponent()
-        myWebBrowser.DocumentText = homework.FeladatSzovege
+        myWebBrowser.DocumentText = Net.WebUtility.HtmlDecode(homework.FeladatSzovege)
         NameLabel.Text = homework.TanuloNev
-        TimeLabel.Text = homework.FeladasDatuma.ToString("yyyy\/MM\/dd - hh:mm:ss")
+        TimeLabel.Text = homework.FeladasDatuma.ToString(GlobalConstants.FORMAT_YMD_HMS)
 
         Me.Anchor = AnchorStyles.Top Or AnchorStyles.Left
         Me.Width = initialWidth
     End Sub
 
+
     Private loadComplete As Boolean = False
+    Private Sub myWebBrowserNavigating(sender As WebBrowser, e As WebBrowserNavigatingEventArgs) Handles myWebBrowser.Navigating
+        If loadComplete Then
+            Process.Start(e.Url.ToString)
+            e.Cancel = True
+        End If
+    End Sub
     Private Sub WebBrowserComplete() Handles myWebBrowser.DocumentCompleted
         loadComplete = True
         myWebBrowser.Height = myWebBrowser.Document.Body.ScrollRectangle.Height

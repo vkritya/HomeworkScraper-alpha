@@ -2,6 +2,7 @@ Public Class EKretaLoginForm
 
     Property Password As String
     Property Username As String
+    Property myClosed As Boolean = False
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         If UsernameTextBox.Text = "" Then
@@ -27,5 +28,9 @@ Public Class EKretaLoginForm
                 SaveLoginCheckBox.Checked = False
             End If
         End If
+    End Sub
+
+    Private Sub EKretaLoginFormClosed(sender As Object, e As EventArgs) Handles MyBase.Closing
+        myClosed = True
     End Sub
 End Class

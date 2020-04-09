@@ -26,6 +26,14 @@ Namespace eKreta
 
         Dim myInstitute As Institute
 
+        Private Sub saveLoginData(username As String, password As String, saveToRegistry As Boolean)
+            myUsername = username
+            myPassword = password
+            If saveToRegistry Then
+                setRegistry("eKreta_Username", myUsername, Microsoft.Win32.RegistryValueKind.String)
+                setRegistry("eKreta_Password", myPassword, Microsoft.Win32.RegistryValueKind.String)
+            End If
+        End Sub
         Private Sub setRegistry(key As String, value As Object, kind As Microsoft.Win32.RegistryValueKind)
             My.Computer.Registry.CurrentUser.CreateSubKey("Software\HomeWorkScraper")
             My.Computer.Registry.SetValue(REGISTRY_KEY, key, value, kind)
@@ -49,10 +57,10 @@ Namespace eKreta
             Dim str = New IO.StreamReader((Await myHttpWebRequest.GetResponseAsync).GetResponseStream).ReadToEnd
             Return JsonConvert.DeserializeObject(Of Type)(str, New JsonSerializerSettings With {.NullValueHandling = NullValueHandling.Ignore})
         End Function
-        Private Function myPOSTRequest(Of Type)(Url As String, body As String, Optional contentType As String = Nothing, Optional Headers As Dictionary(Of String, String) = Nothing) As Type
+        Private Function myPOSTRequest(Of Type)(url As String, body As String, Optional contentType As String = Nothing, Optional Headers As Dictionary(Of String, String) = Nothing) As Type
             Dim bodyBytes = Text.Encoding.UTF8.GetBytes(body)
 
-            Dim myHttpWebRequest As HttpWebRequest = WebRequest.Create(Url)
+            Dim myHttpWebRequest As HttpWebRequest = WebRequest.Create(url)
 
             If Headers IsNot Nothing Then
                 For Each e In Headers
@@ -178,13 +186,10 @@ Namespace eKreta
                         If myAccessToken = "" Then
                             Continue While
                         End If
-                        myUsername = myEKretaLoginForm.Username
-                        myPassword = myEKretaLoginForm.Password
-                        If myEKretaLoginForm.SaveLoginCheckBox.Checked Then
-                            setRegistry("eKreta_Username", myUsername, Microsoft.Win32.RegistryValueKind.String)
-                            setRegistry("eKreta_Password", myPassword, Microsoft.Win32.RegistryValueKind.String)
-                        End If
+                        saveLoginData(myEKretaLoginForm.Username, myEKretaLoginForm.Password, myEKretaLoginForm.SaveLoginCheckBox.Checked)
                         Return myAccessToken
+                    ElseIf EKretaLoginForm.myClosed = True Then
+                        Exit While
                     Else
                         MsgBox("Ha nem jelentkezel be, nem fog működni a program.")
                     End If
@@ -531,17 +536,157 @@ Namespace eKreta
         End Sub
 #End Region
 
-    End Module
-End Namespace
+#Region "Web API"
+        Private myCookieTimeout As Date = Date.MinValue
+        Private myCookies As CookieCollection
 
+        Private Async Function getAuthCookie() As Task(Of CookieCollection)
+            If Now > myCookieTimeout Then
+                If myUsername = "" OrElse myPassword = "" Then
+                    Dim myEKretaLoginForm As New EKretaLoginForm
+                    myEKretaLoginForm.UsernameTextBox.Text = myUsername
+                    If myEKretaLoginForm.ShowDialog() = DialogResult.OK Then
+                        myCookies = Await getNewAuthCookie(myEKretaLoginForm.Username, myEKretaLoginForm.Password)
+                        If myCookies IsNot Nothing Then
+                            saveLoginData(myEKretaLoginForm.Username, myEKretaLoginForm.Password, myEKretaLoginForm.SaveLoginCheckBox.Checked)
+                            Return myCookies
+                        End If
+                    End If
+                    MsgBox("Sikertelen bejelentkezés, a lekérés megszakítva")
+                    Return Nothing
+                Else
+                    Return Await getNewAuthCookie(myUsername, myPassword)
+                End If
+            End If
+            Return myCookies
+        End Function
+        Private Async Function getNewAuthCookie(username As String, password As String) As Task(Of CookieCollection)
+            Try
+                'Login
+                Dim myHttpWebResponse = Await WebAPIGETRequest($"{myInstitute.Url}/Adminisztracio/Login")
+                Dim localCookies As CookieCollection = myHttpWebResponse.Cookies
 
+                'LoginCheck
+                myHttpWebResponse = Await WebAPIPOSTRequest($"{myInstitute.Url}/Adminisztracio/Login/LoginCheck", $"{{""UserName"":""{username}"",""Password"":""{password}""}}", "application/json", localCookies)
+                localCookies.Add(myHttpWebResponse.Cookies)
 
+                'Main page authentication
+                myHttpWebResponse = Await WebAPIGETRequest($"{myInstitute.Url}/Adminisztracio/SzerepkorValaszto", localCookies)
+                localCookies.Add(myHttpWebResponse.Cookies)
 
-Module eKretaFunctions
+                'Redirect Auth
+                myHttpWebResponse = Await WebAPIGETRequest(myInstitute.Url & myHttpWebResponse.Headers("Location"), localCookies)
+                localCookies.Add(myHttpWebResponse.Cookies)
 
-#Region "WebAPI"
+                If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
+                    myCookieTimeout = Now.AddSeconds(1800 - TOKEN_TIME_DEADZONE) 'add 30 min timeout
+                    Return localCookies
+                Else
+                    Return Nothing
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Return Nothing
+            End Try
+        End Function
 
+        Private Async Function WebAPIGETRequest(url As String, Optional cookies As CookieCollection = Nothing, Optional Headers As Dictionary(Of String, String) = Nothing) As Task(Of HttpWebResponse)
+            Dim myHttpWebRequest As HttpWebRequest = WebRequest.Create(New Uri(url))
 
+            myHttpWebRequest.AllowAutoRedirect = False
+
+            If Headers IsNot Nothing Then
+                For Each e In Headers
+                    myHttpWebRequest.Headers.Add(e.Key, e.Value)
+                Next
+            End If
+
+            myHttpWebRequest.CookieContainer = New CookieContainer
+            If cookies IsNot Nothing Then
+                myHttpWebRequest.CookieContainer.Add(cookies)
+            End If
+
+            Return Await myHttpWebRequest.GetResponseAsync
+        End Function
+        Private Async Function WebAPIPOSTRequest(url As String, body As String, Optional contentType As String = Nothing, Optional cookies As CookieCollection = Nothing, Optional Headers As Dictionary(Of String, String) = Nothing) As Task(Of HttpWebResponse)
+            Dim bodyBytes = Text.Encoding.UTF8.GetBytes(body)
+
+            Dim myHttpWebRequest As HttpWebRequest = WebRequest.Create(url)
+            If Headers IsNot Nothing Then
+                For Each e In Headers
+                    myHttpWebRequest.Headers.Add(e.Key, e.Value)
+                Next
+            End If
+            If contentType IsNot Nothing Then
+                myHttpWebRequest.ContentType = contentType
+            End If
+
+            myHttpWebRequest.CookieContainer = New CookieContainer
+            If cookies IsNot Nothing Then
+                myHttpWebRequest.CookieContainer.Add(cookies)
+            End If
+
+            myHttpWebRequest.Method = WebRequestMethods.Http.Post
+            myHttpWebRequest.ContentLength = bodyBytes.Length
+            myHttpWebRequest.GetRequestStream.Write(bodyBytes, 0, bodyBytes.Length)
+            myHttpWebRequest.GetRequestStream.Close()
+
+            Return Await myHttpWebRequest.GetResponseAsync
+        End Function
+
+        Private Structure WebAPIHomeworkResponse
+            Dim AggregateResults As String
+            Dim Data As List(Of WebAPIHomework)
+            Dim Errors As String
+            Dim Total As ULong
+        End Structure
+        Private Structure WebAPIHomework
+            Dim ID As ULong
+            Dim TantargyId As ULong
+            Dim TantargyNev As String
+            Dim isTanitasiOra As String
+            Dim EventId As ULong
+            Dim TanitasiOraId As ULong
+            Dim TanarNeve As String
+            Dim HelyettesitoNev As String
+            Dim HaziFeladaSzoveg As String
+            Dim HaziFeladatRogzitesDatuma As String
+            Dim HaziFeladatTenylegesRogzitesDatuma As String
+            Dim HaziFeladatHatarido As String
+            Dim HaziFeladatId As ULong
+            Dim HaziFeladatRogzitoId As ULong
+            Dim IsTanarRogzitette As String
+            Dim OsztalyCsoport As String
+            Dim OsztalyCsoportId As ULong
+            Dim Oraszam As ULong
+            Dim MegoldottHF As String
+            Dim isTanitasiOra_BOOL As Boolean
+            Dim isTanitasiOra_BNAME As String
+        End Structure
+
+        Public Async Function getHomeworksByDeadline(fromDate As Date, toDate As Date) As Task(Of List(Of Homework))
+            Dim myHttpWebResponse = Await WebAPIGETRequest($"{myInstitute.Url}/api/TanuloHaziFeladatApi/GetTanulotHaziFeladatGrid?data={{""HaziFeladatHataridoKezdoDatum""%3A""{fromDate.ToString("yyyy.+MM.+dd.")}""%2C""HaziFeladatHatairdo""%3A""{toDate.ToString("yyyy.+MM.+dd.")}""%2C""RegiHaziFeladatokElrejtese""%3Afalse%2C""ElkeszitettHaziFeladatokElrejtese""%3Afalse}}", Await getAuthCookie())
+
+            Dim myWebAPIHomeworkResponse = myDeserialize(Of WebAPIHomeworkResponse)(New IO.StreamReader(myHttpWebResponse.GetResponseStream).ReadToEnd)
+
+            Dim myHomeworkTaskList As New List(Of Task(Of Homework))
+            For Each homeworkResponse In myWebAPIHomeworkResponse.Data
+                myHomeworkTaskList.Add(getHomeworkByIDUpdate(homeworkResponse.HaziFeladatId))
+            Next
+
+            Dim outlist As New List(Of Homework)
+            For Each homeworkTask In myHomeworkTaskList
+                outlist.Add(Await homeworkTask)
+            Next
+
+            Return outlist
+        End Function
+
+        Private Function myDeserialize(Of Type)(str As String) As Type
+            Return JsonConvert.DeserializeObject(Of Type)(str, New JsonSerializerSettings With {.NullValueHandling = NullValueHandling.Ignore})
+        End Function
 
 #End Region
-End Module
+
+    End Module
+End Namespace

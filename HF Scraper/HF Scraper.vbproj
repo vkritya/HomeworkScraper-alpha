@@ -100,6 +100,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\GeneralMessageDetail.Designer.vb">
+      <DependentUpon>GeneralMessageDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GeneralMessageDetail.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\HomeworkDetail.Designer.vb">
       <DependentUpon>HomeworkDetail.vb</DependentUpon>
     </Compile>
@@ -167,6 +173,12 @@
     <Compile Include="Forms\EKretaLoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\StudentHomeworkReplyForm.Designer.vb">
+      <DependentUpon>StudentHomeworkReplyForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StudentHomeworkReplyForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="Modules\eKreta\eKretaFormatters.vb" />
     <Compile Include="Modules\eKreta\eKretaFunctions.vb" />
@@ -189,6 +201,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\GeneralMessageDetail.resx">
+      <DependentUpon>GeneralMessageDetail.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\HomeworkDetail.resx">
       <DependentUpon>HomeworkDetail.vb</DependentUpon>
     </EmbeddedResource>

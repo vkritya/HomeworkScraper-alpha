@@ -65,21 +65,19 @@ Public Class TimeSpanPicker
         If myFromDate <> Nothing And myToDate <> Nothing Then
             RaiseEvent FetchButtonClicked(myFromDate, myToDate)
         ElseIf MessageBox.Show("Nem adtál meg egy dátumot (vagy hibásak), frissítse a program a jelenlegi hetet?", "Hibás vagy hiányzó dátumok", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-            myFromDate = DateTime.Now.AddDays(-DateTime.Now.DayOfWeek + 1)
-            FromDateTextBox.Text = $"{myFromDate.Year}/{myFromDate.Month}/{myFromDate.Day}"
-            ToDateTextBox.Text = $"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day}"
+            ThisWeekButtonClick()
             RaiseEvent FetchButtonClicked(myFromDate, DateTime.Now)
         End If
     End Sub
 
     Private Sub ThisWeekButtonClick() Handles ThisWeekButton.Click
         myFromDate = DateTime.Now.AddDays(-DateTime.Now.DayOfWeek + 1)
-        FromDateTextBox.Text = $"{myFromDate.Year}/{myFromDate.Month}/{myFromDate.Day}"
-        ToDateTextBox.Text = $"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day}"
+        FromDateTextBox.Text = myFromDate.ToString(GlobalConstants.FORMAT_YMD)
+        ToDateTextBox.Text = Now.ToString(GlobalConstants.FORMAT_YMD)
     End Sub
 
     Private Sub TimeSpanPickerLoad() Handles MyBase.Load
-        ToDateTextBox.Text = $"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day}"
+        ToDateTextBox.Text = Now.ToString(GlobalConstants.FORMAT_YMD)
     End Sub
 
     Private Sub ResizeHandler() Handles Me.Resize

@@ -8,6 +8,8 @@ Public Class MainForm
         Await eKreta.Initialize()
         setSchoolWeek(Now, myCancelTokenSource.Token)
 
+
+
         'getInstituteList()
         'Dim token = eKreta.getAccessToken(myInstitute.Url, myInstitute.InstituteCode)
         'eKreta.getAccessToken("https://klik037632001.e-kreta.hu", "klik037632001", "YTk2NTcwYTgtMDE5Yy00NjBiLWIwMWUtODYwNWQ2YmQxODBmIyM3OThmYjliOS1kZTBmLTRiMTQtOTE4Yy0xNTQzMWIyNjQxOTM=")

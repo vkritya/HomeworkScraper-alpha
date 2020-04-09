@@ -101,6 +101,7 @@ Partial Class LoginForm
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Bejelentkezés: ####"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
