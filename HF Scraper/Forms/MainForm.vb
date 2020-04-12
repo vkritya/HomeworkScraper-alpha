@@ -1,14 +1,14 @@
-﻿Imports System.Text.RegularExpressions
-Imports Microsoft.WindowsAPICodePack.Dialogs
-
-Public Class MainForm
+﻿Public Class MainForm
 
     Private Async Sub MainFormShown(sender As Object, e As EventArgs) Handles MyBase.Shown
         'eKreta
         Await eKreta.Initialize()
         setSchoolWeek(Now, myCancelTokenSource.Token)
 
+        Dim asd = Await eKreta.getMessages()
 
+        'Dim studentHomeworkReply As New StudentHomeworkReplyForm(myHomeworkDetail)
+        'studentHomeworkReply.Show()
 
         'getInstituteList()
         'Dim token = eKreta.getAccessToken(myInstitute.Url, myInstitute.InstituteCode)
@@ -20,27 +20,24 @@ Public Class MainForm
         'MsgBox($"{Me.TimetableSplitContainer.Panel2.Size.Width}")
     End Sub
 
+    Private Sub SettingsButtonClick() Handles SettingsButton.Click
+
+    End Sub
+
 #Region "Timetable"
     Dim myWeek As Date = Now
     Dim myCancelTokenSource As New Threading.CancellationTokenSource
 
-    Private Sub DecrementWeekButtonClick() Handles DecrementWeekButton.Click
-        myWeek = myWeek.AddDays(-7)
+    Private Sub ChangeWeekButtonClick(sender As Button, e As EventArgs) Handles DecrementWeekButton.Click, IncrementWeekButton.Click
+        If sender.Equals(DecrementWeekButton) Then
+            myWeek = myWeek.AddDays(-7)
+        Else
+            myWeek = myWeek.AddDays(7)
+        End If
         Dim weekStart = myWeek.AddDays(-myWeek.DayOfWeek + 1) 'Set to monday of week
         Dim weekEnd = weekStart.AddDays(4) 'Set to friday of week
-        WeekTimeSpanLabel.Text = weekStart.ToString(GlobalConstants.FORMAT_YMD) & " - " & weekEnd.ToString(GlobalConstants.FORMAT_YMD)
 
-        myCancelTokenSource.Cancel()
-        myCancelTokenSource = New Threading.CancellationTokenSource
-#Disable Warning BC42358 ' Because this call is not awaited, execution of the current method continues before the call is completed
-        setSchoolWeek(myWeek, myCancelTokenSource.Token)
-#Enable Warning BC42358 ' Because this call is not awaited, execution of the current method continues before the call is completed
-    End Sub
-    Private Sub IncrementWeekButtonClick() Handles IncrementWeekButton.Click
-        myWeek = myWeek.AddDays(7)
-        Dim weekStart = myWeek.AddDays(-myWeek.DayOfWeek + 1) 'Set to monday of week
-        Dim weekEnd = weekStart.AddDays(4) 'Set to friday of week
-        WeekTimeSpanLabel.Text = weekStart.ToString(GlobalConstants.FORMAT_YMD) & " - " & weekEnd.ToString(GlobalConstants.FORMAT_YMD)
+        WeekTimeSpanLabel.Text = weekStart.ToString(Common.Constant.FORMAT_YMD) & " - " & weekEnd.ToString(Common.Constant.FORMAT_YMD)
 
         myCancelTokenSource.Cancel()
         myCancelTokenSource = New Threading.CancellationTokenSource
@@ -51,7 +48,7 @@ Public Class MainForm
     Private Async Function setSchoolWeek(week As Date, cancelToken As Threading.CancellationToken) As Task
         Dim weekStart = myWeek.AddDays(-myWeek.DayOfWeek + 1) 'Set to monday of week
         Dim weekEnd = weekStart.AddDays(4) 'Set to friday of week
-        WeekTimeSpanLabel.Text = weekStart.ToString(GlobalConstants.FORMAT_YMD) & " - " & weekEnd.ToString(GlobalConstants.FORMAT_YMD)
+        WeekTimeSpanLabel.Text = weekStart.ToString(Common.Constant.FORMAT_YMD) & " - " & weekEnd.ToString(Common.Constant.FORMAT_YMD)
         Dim lessons = Await eKreta.getLessonRangeUpdate(weekStart, weekEnd)
         If Not cancelToken.IsCancellationRequested Then
             mySchoolWeek.setLessons(lessons)
@@ -75,7 +72,41 @@ Public Class MainForm
     End Sub
 #End Region
 
-    Public Sub UpdateUI()
+#Region "Messages"
+    'GET Messenger, Facebook, e-mail, e-ügyintézés, classroom
+    Private Async Sub MessagesTimeSpanPickerClick(fromDate As Date, toDate As Date) Handles MessagesTimeSpanPicker.FetchButtonClicked
+        MessagesTimeSpanPicker.Enabled = False
+        Dim eKretaMessageTask = eKreta.getMessageRange(fromDate, toDate)
+
+
+        'e-Kreta
+        For Each eKretaMessage In Await eKretaMessageTask
+            Dim myMessage As Common.Struct.Message
+            myMessage.Service = Common.Struct.ServiceType.eKretaMessage
+            myMessage.MessageID = eKretaMessage.ID
+            myMessage.MessageText = eKretaMessage.MessageBody
+            myMessage.Sender = eKretaMessage.SenderName
+            myMessage.myDate = eKretaMessage.myDate
+            myMessage.Attachment = eKretaMessage.Files
+
+            myMessage.Comments = Nothing
+            addMessage(myMessage)
+        Next
+
+        MessagesTimeSpanPicker.Enabled = True
+    End Sub
+    Private Sub addMessage(myMessage As Common.Struct.Message)
 
     End Sub
+#End Region
+
+#Region "Homeworks"
+    Private Async Sub HomeworkTimeSpanPickerClick() Handles HomeworkTimeSpanPicker.FetchButtonClicked
+        Message
+    End Sub
+
+
+#End Region
+
+
 End Class

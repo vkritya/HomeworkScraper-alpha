@@ -1,5 +1,5 @@
 ﻿Public Class Subject
-    Private myLesson As Lesson? = Nothing
+    Private myLesson As eKretaLesson? = Nothing
     Private myMainForm As MainForm
 
     'For Blanks
@@ -9,7 +9,7 @@
     End Sub
 
     'For Use
-    Public Sub New(mainForm As MainForm, myLesson As Lesson)
+    Public Sub New(mainForm As MainForm, myLesson As eKretaLesson)
         InitializeComponent()
         myMainForm = mainForm
         setLesson(myLesson)
@@ -24,18 +24,18 @@
         Me.Size = New Size(Me.Size.Width, length * 2)
     End Sub
 
-    Public Sub setLesson(myLesson As Lesson)
+    Public Sub setLesson(myLesson As eKretaLesson)
         Me.myLesson = myLesson
         Me.Height = 2 * (myLesson.EndTime - myLesson.StartTime).TotalMinutes
         setLabel(SubjectNameLabel, myLesson.SubjectName)
         setLabel(TeacherLabel, myLesson.Teacher)
         setLabel(ClassRoomLabel, myLesson.ClassRoom)
-        setLabel(StartTimeLabel, myLesson.StartTime.ToString("hh:mm"))
-        setLabel(EndTimeLabel, myLesson.EndTime.ToString("hh:mm"))
+        setLabel(StartTimeLabel, myLesson.StartTime.ToString("H:mm"))
+        setLabel(EndTimeLabel, myLesson.EndTime.ToString("H:mm"))
         myHomeworkIcon.Visible = (myLesson.TeacherHomeworkID <> 0)
     End Sub
 
-    Public Function getLesson() As Lesson
+    Public Function getLesson() As eKretaLesson
         Return myLesson
     End Function
 

@@ -6,12 +6,12 @@
         InitializeComponent()
     End Sub
 
-    Public Sub New(mainForm As MainForm, minTime As Date, maxTime As Date, myLessonArray() As Lesson)
+    Public Sub New(mainForm As MainForm, minTime As Date, maxTime As Date, myLessonArray() As eKretaLesson)
         InitializeComponent()
         Me.myMainForm = mainForm
         Initialize(minTime, maxTime, myLessonArray)
     End Sub
-    Public Sub Initialize(minTime As Date, maxTime As Date, myLessonArray() As Lesson)
+    Public Sub Initialize(minTime As Date, maxTime As Date, myLessonArray() As eKretaLesson)
         If myLessonArray.Length > 0 Then
             If (myLessonArray(0).StartTime - minTime).TotalMinutes > 0 Then
                 addBlank((myLessonArray(0).StartTime.TimeOfDay - minTime.TimeOfDay).TotalMinutes)
@@ -32,7 +32,7 @@
         Me.Controls.Add(mySubject)
         mySubject.setBlank(length)
     End Sub
-    Private Sub addSubject(lesson As Lesson)
+    Private Sub addSubject(lesson As eKretaLesson)
         Dim mySubject As New Subject(myMainForm, lesson)
         Me.Controls.Add(mySubject)
     End Sub

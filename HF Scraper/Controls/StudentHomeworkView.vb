@@ -3,7 +3,7 @@
         InitializeComponent()
         myWebBrowser.DocumentText = Net.WebUtility.HtmlDecode(homework.FeladatSzovege)
         NameLabel.Text = homework.TanuloNev
-        TimeLabel.Text = homework.FeladasDatuma.ToString(GlobalConstants.FORMAT_YMD_HMS)
+        TimeLabel.Text = homework.FeladasDatuma.ToString(Common.Constant.FORMAT_YMD_HMS)
 
         Me.Anchor = AnchorStyles.Top Or AnchorStyles.Left
         Me.Width = initialWidth

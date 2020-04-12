@@ -2,15 +2,6 @@
 Imports System.Web
 Imports Newtonsoft.Json
 
-'TODO:
-'    
-'    
-'    
-'    
-'    
-'    
-'    
-'    
 Namespace eKreta
     Module eKreta
         Private Const API_KEY = "7856d350-1fda-45f5-822d-e1a2f3f1acf0"
@@ -24,7 +15,7 @@ Namespace eKreta
         Dim myAccessTokenValid As Date = Date.MinValue
         Private myAccessToken As String
 
-        Dim myInstitute As Institute
+        Dim myInstitute As eKretaInstitute
 
         Private Sub saveLoginData(username As String, password As String, saveToRegistry As Boolean)
             myUsername = username
@@ -111,7 +102,7 @@ Namespace eKreta
         End Function
 
 #Region "Institute"
-        Private myInstitutes As New Dictionary(Of ULong, Institute)
+        Private myInstitutes As New Dictionary(Of ULong, eKretaInstitute)
 
         Private Structure InstituteResponse
             Dim InstituteId As ULong
@@ -123,21 +114,21 @@ Namespace eKreta
             Dim FeatureToggleSet As Dictionary(Of String, String)
         End Structure
 
-        Async Function getInstituteByID(instituteID As ULong) As Task(Of Institute)
+        Async Function getInstituteByID(instituteID As ULong) As Task(Of eKretaInstitute)
             If myInstitutes.Count > 0 Then
                 Return myInstitutes(instituteID)
             End If
             Await getInstitutes()
             Return myInstitutes(instituteID)
         End Function
-        Async Function getInstitutes() As Task(Of List(Of Institute))
+        Async Function getInstitutes() As Task(Of List(Of eKretaInstitute))
             If myInstitutes.Count <= 0 Then
                 Dim myInstituteResponseList = Await myGETRequest(Of List(Of InstituteResponse))("https://kretaglobalmobileapi.ekreta.hu/api/v1/Institute", New Dictionary(Of String, String) From {{"apiKey", API_KEY}})
-                Dim outList As New List(Of Institute)
+                Dim outList As New List(Of eKretaInstitute)
 
                 'Keep important things only
                 For Each instituteResponse In myInstituteResponseList
-                    Dim myInstitute As Institute
+                    Dim myInstitute As eKretaInstitute
                     myInstitute.InstituteID = instituteResponse.InstituteId
                     myInstitute.InstituteCode = instituteResponse.InstituteCode
                     myInstitute.Name = instituteResponse.Name
@@ -221,7 +212,7 @@ Namespace eKreta
 #End Region
 
 #Region "Lessons"
-        Private myLessons As New Dictionary(Of ULong, Lesson)
+        Private myLessons As New Dictionary(Of ULong, eKretaLesson)
 
         Private Structure LessonResponse
             Dim LessonID As ULong
@@ -250,23 +241,23 @@ Namespace eKreta
             Dim Homework As String
         End Structure
 
-        Public Async Function getLessonByID(lessonID) As Task(Of Lesson)
+        Public Async Function getLessonByID(lessonID) As Task(Of eKretaLesson)
             If myLessons.ContainsKey(lessonID) Then
                 Return myLessons(lessonID)
             End If
             Await getLessonRangePrivate("null", "null")
             Return myLessons(lessonID)
         End Function
-        Public Async Function getLessonRangeUpdate(fromDate As Date, toDate As Date) As Task(Of List(Of Lesson))
+        Public Async Function getLessonRangeUpdate(fromDate As Date, toDate As Date) As Task(Of List(Of eKretaLesson))
             Return Await getLessonRangePrivate(Format.formatForRequest(fromDate), Format.formatForRequest(toDate))
         End Function
 
-        Private Async Function getLessonRangePrivate(fromDate As String, toDate As String) As Task(Of List(Of Lesson))
+        Private Async Function getLessonRangePrivate(fromDate As String, toDate As String) As Task(Of List(Of eKretaLesson))
             Dim myLessonResponseList = Await myGETRequest(Of List(Of LessonResponse))($"{myInstitute.Url}/mapi/api/v1/LessonAmi?fromDate={fromDate}&toDate={toDate}", New Dictionary(Of String, String) From {{"Authorization", $"Bearer {getAccessToken()}"}}, True)
 
-            Dim outlist As New List(Of Lesson)
+            Dim outlist As New List(Of eKretaLesson)
             For Each lessonResponse In myLessonResponseList
-                Dim lesson As Lesson
+                Dim lesson As eKretaLesson
                 lesson.ClassRoom = lessonResponse.ClassRoom
                 lesson.StartTime = Format.getDateTime(lessonResponse.StartTime)
                 lesson.EndTime = Format.getDateTime(lessonResponse.EndTime)
@@ -288,7 +279,7 @@ Namespace eKreta
 #End Region
 
 #Region "Homeworks"
-        Private myHomeworks As New Dictionary(Of ULong, Homework)
+        Private myHomeworks As New Dictionary(Of ULong, eKretaHomework)
 
         Private Structure TeacherHomeworkResponse
             Dim Uid As String
@@ -332,8 +323,8 @@ Namespace eKreta
             End Sub
         End Structure
 
-        Async Function getHomeworkRangeUpdate(fromDate As String, toDate As String) As Task(Of List(Of Homework))
-            Dim myHomeworkTaskList As New List(Of Task(Of Homework))
+        Async Function getHomeworkRangeUpdate(fromDate As String, toDate As String) As Task(Of List(Of eKretaHomework))
+            Dim myHomeworkTaskList As New List(Of Task(Of eKretaHomework))
             'Start Requests in parallel
             For Each lesson In Await getLessonRangeUpdate(fromDate, toDate)
                 If lesson.TeacherHomeworkID <> 0 Then
@@ -342,7 +333,7 @@ Namespace eKreta
             Next
 
             'Await Requests
-            Dim outList As New List(Of Homework)
+            Dim outList As New List(Of eKretaHomework)
             For Each myHomeworkTask In myHomeworkTaskList
                 outList.Add(Await myHomeworkTask)
             Next
@@ -350,20 +341,20 @@ Namespace eKreta
             Return outList
         End Function
 
-        Public Async Function getHomeworkByID(homeworkID As ULong) As Task(Of Homework)
+        Public Async Function getHomeworkByID(homeworkID As ULong) As Task(Of eKretaHomework)
             If myHomeworks.ContainsKey(homeworkID) Then
                 Return myHomeworks(homeworkID)
             End If
             Return Await getHomeworkByIDUpdate(homeworkID)
         End Function
-        Public Async Function getHomeworkByIDUpdate(homeworkID As ULong) As Task(Of Homework)
+        Public Async Function getHomeworkByIDUpdate(homeworkID As ULong) As Task(Of eKretaHomework)
             Dim myTeacherHomeworkResponseTask = myGETRequest(Of TeacherHomeworkResponse)($"{myInstitute.Url}/mapi/api/v1/HaziFeladat/TanarHaziFeladat/{homeworkID}", New Dictionary(Of String, String) From {{"Authorization", $"Bearer {getAccessToken()}"}})
             Dim myStudentHomeworkResponseTask = myGETRequest(Of List(Of StudentHomeworkResponse))($"{myInstitute.Url}/mapi/api/v1/HaziFeladat/TanuloHaziFeladatLista/{homeworkID}", New Dictionary(Of String, String) From {{"Authorization", $"Bearer {getAccessToken()}"}})
             Return formatHomeworkResponse(Await myTeacherHomeworkResponseTask, Await myStudentHomeworkResponseTask)
         End Function
 
         Private Function formatHomeworkResponse(teacherHomeworkResponse As TeacherHomeworkResponse, studentHomeworkResponseList As List(Of StudentHomeworkResponse))
-            Dim myHomework As Homework
+            Dim myHomework As eKretaHomework
             myHomework.StudentHomeworks = New List(Of StudentHomework)
 
             myHomework.ID = teacherHomeworkResponse.Id
@@ -393,7 +384,7 @@ Namespace eKreta
             Return myHomework
         End Function
 
-        Public Sub sendStudentHomework(homework As Homework, szoveg As String)
+        Public Sub sendStudentHomework(homework As eKretaHomework, szoveg As String)
             Dim myStudentHomeworkPayload As StudentHomeworkPayload
             myStudentHomeworkPayload.FeladatSzovege = szoveg
             myStudentHomeworkPayload.Hatarido = homework.Hatarido
@@ -408,7 +399,7 @@ Namespace eKreta
 #End Region
 
 #Region "Messages (e-Ügyintézés)"
-        Private myMessages As New Dictionary(Of ULong, Message)
+        Private myMessages As New Dictionary(Of ULong, eKretaMessage)
 
         Private Structure MessageResponse
             Dim azonosito As ULong
@@ -425,7 +416,7 @@ Namespace eKreta
             Dim szoveg As String
             Dim targy As String
             Dim cimzettLista As List(Of Cimzett)
-            Dim csatolmanyok As List(Of Fajl)
+            Dim csatolmanyok As List(Of eKretaFajl)
         End Structure
         Private Structure Cimzett
             Dim azonosito As ULong
@@ -441,11 +432,11 @@ Namespace eKreta
             Dim leiras As String
         End Structure
 
-        Public Async Function getMessageRange(fromDate As Date, toDate As Date) As Task(Of List(Of Message))
+        Public Async Function getMessageRange(fromDate As Date, toDate As Date) As Task(Of List(Of eKretaMessage))
             toDate = toDate.AddDays(1) 'Include day of toDate
 
             Dim messages = Await getMessages()
-            Dim outlist As New List(Of Message)
+            Dim outlist As New List(Of eKretaMessage)
             For Each myMessage In messages
                 If fromDate <= myMessage.myDate AndAlso myMessage.myDate < toDate Then
                     outlist.Add(myMessage)
@@ -454,17 +445,17 @@ Namespace eKreta
             Return outlist
         End Function
 
-        Public Async Function getMessagesUpdate() As Task(Of List(Of Message))
+        Public Async Function getMessagesUpdate() As Task(Of List(Of eKretaMessage))
             Return Await getMessagesPrivate(getAccessToken())
         End Function
-        Public Async Function getMessages() As Task(Of List(Of Message))
+        Public Async Function getMessages() As Task(Of List(Of eKretaMessage))
             If myMessages.Keys.Count <> 0 Then
                 Return myMessages.Values.ToList
             Else
                 Return Await getMessagesUpdate()
             End If
         End Function
-        Public Async Function getMessageByID(messageID As ULong) As Task(Of Message)
+        Public Async Function getMessageByID(messageID As ULong) As Task(Of eKretaMessage)
             If myMessages.ContainsKey(messageID) Then
                 Return myMessages(messageID)
             Else
@@ -472,14 +463,14 @@ Namespace eKreta
             End If
             Return Nothing
         End Function
-        Public Async Function getMessageByIDUpdate(messageID As ULong) As Task(Of Message)
+        Public Async Function getMessageByIDUpdate(messageID As ULong) As Task(Of eKretaMessage)
             Return Await getMessageByIDPrivate(messageID, getAccessToken())
         End Function
 
-        Private Async Function getMessageByIDPrivate(messageID As ULong, accessToken As String) As Task(Of Message)
+        Private Async Function getMessageByIDPrivate(messageID As ULong, accessToken As String) As Task(Of eKretaMessage)
             Dim myMessageResponse = Await myGETRequest(Of MessageResponse)($"https://eugyintezes.e-kreta.hu/integration-kretamobile-api/v1/kommunikacio/postaladaelemek/{messageID}", New Dictionary(Of String, String) From {{"Authorization", $"Bearer {accessToken}"}})
             'Keep important things only
-            Dim myMessage As Message
+            Dim myMessage As eKretaMessage
             myMessage.ID = myMessageResponse.azonosito
             myMessage.isRead = myMessageResponse.isElolvasva
             myMessage.MessageBody = myMessageResponse.uzenet.szoveg
@@ -497,16 +488,16 @@ Namespace eKreta
 
             Return myMessage
         End Function
-        Private Async Function getMessagesPrivate(accessToken As String) As Task(Of List(Of Message))
+        Private Async Function getMessagesPrivate(accessToken As String) As Task(Of List(Of eKretaMessage))
             'Get messages with short text (for IDs)
             Dim myMessageResponseList = Await myGETRequest(Of List(Of MessageResponse))("https://eugyintezes.e-kreta.hu/integration-kretamobile-api/v1/kommunikacio/postaladaelemek/sajat", New Dictionary(Of String, String) From {{"Authorization", $"Bearer {accessToken}"}})
 
-            Dim myMessageByIDTaskList As New List(Of Task(Of Message))
+            Dim myMessageByIDTaskList As New List(Of Task(Of eKretaMessage))
             'Start all async (in parallel)
             For Each myMessageResponse In myMessageResponseList
                 myMessageByIDTaskList.Add(getMessageByIDUpdate(myMessageResponse.azonosito))
             Next
-            Dim outList As New List(Of Message)
+            Dim outList As New List(Of eKretaMessage)
             'Await all
             For Each myMessageByIDTask In myMessageByIDTaskList
                 outList.Add(Await myMessageByIDTask)
@@ -514,7 +505,7 @@ Namespace eKreta
             Return outList
         End Function
 
-        Public Async Sub downloadFile(file As Fajl, localPath As String)
+        Public Async Sub downloadFile(file As eKretaFajl, localPath As String)
             Dim myWebRequest = WebRequest.Create($"https://eugyintezes.e-kreta.hu/integration-kretamobile-api/v1/dokumentumok/uzenetek/{file.azonosito}")
             myWebRequest.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {getAccessToken()}")
 
@@ -664,17 +655,17 @@ Namespace eKreta
             Dim isTanitasiOra_BNAME As String
         End Structure
 
-        Public Async Function getHomeworksByDeadline(fromDate As Date, toDate As Date) As Task(Of List(Of Homework))
+        Public Async Function getHomeworksByDeadline(fromDate As Date, toDate As Date) As Task(Of List(Of eKretaHomework))
             Dim myHttpWebResponse = Await WebAPIGETRequest($"{myInstitute.Url}/api/TanuloHaziFeladatApi/GetTanulotHaziFeladatGrid?data={{""HaziFeladatHataridoKezdoDatum""%3A""{fromDate.ToString("yyyy.+MM.+dd.")}""%2C""HaziFeladatHatairdo""%3A""{toDate.ToString("yyyy.+MM.+dd.")}""%2C""RegiHaziFeladatokElrejtese""%3Afalse%2C""ElkeszitettHaziFeladatokElrejtese""%3Afalse}}", Await getAuthCookie())
 
             Dim myWebAPIHomeworkResponse = myDeserialize(Of WebAPIHomeworkResponse)(New IO.StreamReader(myHttpWebResponse.GetResponseStream).ReadToEnd)
 
-            Dim myHomeworkTaskList As New List(Of Task(Of Homework))
+            Dim myHomeworkTaskList As New List(Of Task(Of eKretaHomework))
             For Each homeworkResponse In myWebAPIHomeworkResponse.Data
                 myHomeworkTaskList.Add(getHomeworkByIDUpdate(homeworkResponse.HaziFeladatId))
             Next
 
-            Dim outlist As New List(Of Homework)
+            Dim outlist As New List(Of eKretaHomework)
             For Each homeworkTask In myHomeworkTaskList
                 outlist.Add(Await homeworkTask)
             Next

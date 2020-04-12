@@ -13,7 +13,7 @@
 
     Private SchoolDays(4) As SchoolDay
 
-    Sub setLessons(lessons As List(Of Lesson))
+    Sub setLessons(lessons As List(Of eKretaLesson))
         Me.AutoScroll = False
         Me.VerticalScroll.Enabled = False
         Me.HorizontalScroll.Enabled = False
@@ -47,7 +47,7 @@
         Me.HorizontalScroll.Enabled = True
         Me.AutoScroll = True
     End Sub
-    Private Sub addSchoolDay(minTime As Date, maxTime As Date, lessons() As Lesson)
+    Private Sub addSchoolDay(minTime As Date, maxTime As Date, lessons() As eKretaLesson)
         Dim index = lessons(0).StartTime.DayOfWeek - 1
 
         SchoolDays(index) = (New SchoolDay(myMainForm, minTime, maxTime, lessons))

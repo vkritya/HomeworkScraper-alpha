@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   viewBox="0 0 64 64.000004"
+   version="1.1"
+   id="svg4540"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="editor_icons.svg"
+   inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_bold_icon_x16.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs4534" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="34.401201"
+     inkscape:cy="29.595069"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:pagecheckerboard="true"
+     inkscape:window-width="1600"
+     inkscape:window-height="1137"
+     inkscape:window-x="1016"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:snap-bbox="false"
+     inkscape:bbox-nodes="false"
+     inkscape:snap-nodes="false"
+     inkscape:snap-bbox-edge-midpoints="false"
+     inkscape:snap-bbox-midpoints="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5085"
+       spacingx="1"
+       spacingy="1"
+       empspacing="4"
+       color="#ff3fe5"
+       opacity="0.1254902"
+       dotted="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata4537">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1058.5195)">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5091"
+       width="16"
+       height="16"
+       x="0"
+       y="1058.5195" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:osifont;-inkscape-font-specification:osifont;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="7.8125"
+       y="1072.2461"
+       id="text5089"><tspan
+         sodipodi:role="line"
+         id="tspan5087"
+         x="7.8125"
+         y="1072.2461"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">B</tspan></text>
+    <rect
+       y="1058.5195"
+       x="16"
+       height="16"
+       width="16"
+       id="rect5097"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:osifont;-inkscape-font-specification:osifont;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="23.640625"
+       y="1071.8164"
+       id="text5095"><tspan
+         sodipodi:role="line"
+         id="tspan5093"
+         x="23.640625"
+         y="1071.8164"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">I</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5109"
+       width="16"
+       height="16"
+       x="32"
+       y="1058.5195"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_underline_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       d="m 36.479062,1061.1847 v 5.1729 c 0,0.9487 0.114005,1.698 0.342015,2.2476 0.228011,0.5455 0.608709,0.963 1.142092,1.2521 0.533383,0.289 1.219452,0.4336 2.058207,0.4336 0.863183,0 1.559431,-0.1649 2.088743,-0.4948 0.533383,-0.3338 0.901865,-0.7654 1.105446,-1.2947 0.203582,-0.5294 0.305372,-1.2439 0.305372,-2.1438 v -5.1729 h -1.184843 v 5.1669 c 0,1.1238 -0.185258,1.883 -0.555776,2.2781 -0.370519,0.3949 -0.991441,0.5924 -1.862769,0.5924 -0.508953,0 -0.940546,-0.099 -1.294777,-0.2993 -0.35016,-0.1995 -0.598529,-0.4825 -0.745107,-0.849 -0.142507,-0.3704 -0.21376,-0.9446 -0.21376,-1.7222 v -5.1669 z m -0.778699,9.8879 v 0.7818 h 8.599272 v -0.7818 z"
+       id="text5101"
+       inkscape:connector-curvature="0" />
+    <rect
+       y="1058.5195"
+       x="48"
+       height="16"
+       width="16"
+       id="rect5111"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_strikethrough_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:osifont;-inkscape-font-specification:osifont;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       d="m 54.404408,1063.5885 v 3.2986 h -1.097557 v -0.2254 c 0,-0.3147 -0.0118,-0.5332 -0.0354,-0.6538 -0.04196,-0.1941 -0.115788,-0.3533 -0.220692,-0.4792 -0.104904,-0.1285 -0.268029,-0.2347 -0.49095,-0.3186 -0.22292,-0.084 -0.513111,-0.1263 -0.869784,-0.1263 -0.359296,0 -0.674925,0.05 -0.947675,0.1499 -0.27275,0.097 -0.481247,0.2365 -0.625489,0.4202 -0.144244,0.1809 -0.248623,0.4199 -0.311565,0.7163 l 0.692759,0.094 c 0.07605,-0.2963 0.193154,-0.5018 0.35051,-0.6172 0.159978,-0.118 0.405716,-0.177 0.738785,-0.177 0.356674,0 0.626277,0.08 0.807236,0.2395 0.133752,0.1181 0.200628,0.3217 0.200628,0.6101 0,0.026 -0.0021,0.087 -0.0047,0.1842 -0.19628,0.069 -0.500107,0.1281 -0.855622,0.1829 h -2.683703 v 0.6043 h 0.91463 c -0.0528,0.062 -0.102048,0.1284 -0.143981,0.2041 -0.09179,0.1678 -0.138079,0.3549 -0.138079,0.5594 0,0.3488 0.122869,0.636 0.369393,0.8615 0.246524,0.2229 0.599656,0.3341 1.058611,0.3341 0.277994,0 0.537632,-0.047 0.778911,-0.1382 0.243901,-0.092 0.496589,-0.2491 0.758849,-0.472 0.02098,0.1967 0.06819,0.3688 0.14162,0.5157 h 0.739965 c -0.08917,-0.16 -0.149095,-0.3261 -0.180565,-0.4992 -0.02885,-0.1757 -0.04367,-0.5927 -0.04367,-1.251 v -0.1144 h 1.097557 v 1.8646 h 0.657353 v -0.5228 c 0.280618,0.4118 0.667058,0.6173 1.160106,0.6173 0.495671,0 0.920532,-0.1958 1.274582,-0.5866 0.303913,-0.3355 0.469155,-0.7975 0.512193,-1.3725 h 0.682138 c 0.03277,0.5932 0.195579,1.0655 0.505112,1.4008 0.348806,0.3724 0.809072,0.5583 1.380797,0.5583 0.456332,0 0.840937,-0.1347 1.153026,-0.4049 0.314711,-0.2727 0.509308,-0.6494 0.585363,-1.1294 l -0.696306,-0.091 c -0.04983,0.3541 -0.167846,0.6167 -0.354051,0.7872 -0.186204,0.1705 -0.418304,0.2561 -0.696299,0.2561 -0.346183,0 -0.626407,-0.1279 -0.84146,-0.3823 -0.183798,-0.2175 -0.283672,-0.5534 -0.310384,-0.9949 h 3.532244 v -0.6043 H 59.42486 c 0.04102,-0.3638 0.14521,-0.643 0.313926,-0.8355 0.22292,-0.2571 0.513111,-0.386 0.869784,-0.386 0.236034,0 0.436662,0.071 0.601886,0.2124 0.167846,0.1417 0.283765,0.3532 0.34933,0.6338 l 0.689218,-0.1062 c -0.0813,-0.4222 -0.266194,-0.7478 -0.554679,-0.976 -0.288486,-0.2308 -0.66037,-0.3458 -1.114079,-0.3458 -0.359296,0 -0.691579,0.086 -0.998423,0.2561 -0.304221,0.1679 -0.531469,0.4206 -0.680957,0.7589 -0.102859,0.2327 -0.156743,0.5022 -0.188827,0.7883 h -0.708101 c -0.01937,-0.184 -0.0491,-0.3631 -0.102675,-0.5323 -0.08392,-0.2649 -0.199842,-0.4911 -0.34933,-0.6774 -0.146865,-0.1888 -0.335692,-0.3344 -0.566481,-0.4366 -0.228166,-0.105 -0.471149,-0.157 -0.728164,-0.157 -0.464199,0 -0.845787,0.1879 -1.144763,0.5629 v -2.0582 z m 1.790316,2.0771 c 0.306844,0 0.567398,0.1298 0.782451,0.3895 0.164094,0.1957 0.265272,0.4738 0.305664,0.832 h -2.209275 c 0.04144,-0.341 0.147813,-0.6129 0.318645,-0.8155 0.225543,-0.2701 0.493049,-0.406 0.802515,-0.406 z m -4.563712,1.8258 h 0.959477 v 0.027 c 0,0.3121 -0.03724,0.5481 -0.113296,0.7081 -0.09966,0.2071 -0.256097,0.3715 -0.468527,0.4921 -0.21243,0.118 -0.455414,0.177 -0.728164,0.177 -0.275373,0 -0.484787,-0.063 -0.62903,-0.1888 -0.14162,-0.1259 -0.21243,-0.2833 -0.21243,-0.4721 0,-0.1233 0.03239,-0.2343 0.09795,-0.334 0.06556,-0.1023 0.15906,-0.18 0.2797,-0.2325 0.120639,-0.053 0.326119,-0.1 0.617228,-0.1416 0.07503,-0.011 0.127532,-0.024 0.197088,-0.036 z m 3.442552,0 H 57.2911 c -0.02911,0.4174 -0.134513,0.7469 -0.325726,0.976 -0.225544,0.2675 -0.493048,0.4012 -0.802515,0.4012 -0.380276,0 -0.682268,-0.1831 -0.905189,-0.5476 -0.109423,-0.1789 -0.162481,-0.4718 -0.184106,-0.8296 z"
+       id="text5105"
+       inkscape:connector-curvature="0" />
+    <rect
+       y="1074.5195"
+       x="0"
+       height="16"
+       width="16"
+       id="rect5117"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_forecolor_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5119"
+       width="16"
+       height="16"
+       x="16"
+       y="1074.5195"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_backcolor_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g5137"
+       transform="matrix(0.83333333,0,0,0.83333333,1.0119199,180.01763)"
+       style="stroke-width:1.20000005">
+      <text
+         id="text5127"
+         y="1086.9838"
+         x="8.3928576"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.20000005"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.66666698px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;stroke-width:1.20000005"
+           y="1086.9838"
+           x="8.3928576"
+           id="tspan5125"
+           sodipodi:role="line">A</tspan></text>
+      <rect
+         y="1087.5195"
+         x="2.3856962"
+         height="1.9999688"
+         width="12"
+         id="rect5131"
+         style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:2.4000001;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g5326">
+      <rect
+         y="1077.0885"
+         x="19.5"
+         height="10.862"
+         width="9"
+         id="rect5153"
+         style="fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text5151"
+         y="1086.894"
+         x="24.005968"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33346272px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.20000005"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.22234154px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;stroke-width:1.20000005"
+           y="1086.894"
+           x="24.005968"
+           id="tspan5149"
+           sodipodi:role="line">A</tspan></text>
+    </g>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5183"
+       width="16"
+       height="16"
+       x="0"
+       y="1090.5195"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_align_left_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       y="1090.5195"
+       x="16"
+       height="16"
+       width="16"
+       id="rect5185"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_align_center_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5187"
+       width="16"
+       height="16"
+       x="32"
+       y="1090.5195"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_align_right_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       y="1090.5195"
+       x="48"
+       height="16"
+       width="16"
+       id="rect5189"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_align_justify_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g5203"
+       transform="translate(0,0.25)">
+      <rect
+         y="1093.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5191"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1096.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5193"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1099.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5195"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1102.0195"
+         x="2"
+         height="1.5"
+         width="9"
+         id="rect5197"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       transform="matrix(-1,0,0,1,48,0.25)"
+       id="g5213">
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5205"
+         width="12"
+         height="1.5"
+         x="2"
+         y="1093.0195" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5207"
+         width="12"
+         height="1.5"
+         x="2"
+         y="1096.0195" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5209"
+         width="12"
+         height="1.5"
+         x="2"
+         y="1099.0195" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5211"
+         width="9"
+         height="1.5"
+         x="2"
+         y="1102.0195" />
+    </g>
+    <g
+       id="g5223"
+       transform="matrix(-1,0,0,1,64,0.25)">
+      <rect
+         y="1093.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5215"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1096.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5217"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1099.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5219"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1102.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5221"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g5233"
+       transform="matrix(-1,0,0,1,32,0.25)">
+      <rect
+         y="1093.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5225"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1096.0195"
+         x="3"
+         height="1.5"
+         width="10"
+         id="rect5227"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1099.0195"
+         x="2"
+         height="1.5"
+         width="12"
+         id="rect5229"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="1102.0195"
+         x="4"
+         height="1.5"
+         width="8"
+         id="rect5231"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.99999988;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <rect
+       y="1106.5195"
+       x="0"
+       height="16"
+       width="16"
+       id="rect5235"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_orderedlist_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5237"
+       width="16"
+       height="16"
+       x="16"
+       y="1106.5195"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_unorderedlist_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       y="1106.5195"
+       x="32"
+       height="16"
+       width="16"
+       id="rect5239"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_indent_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5241"
+       width="16"
+       height="16"
+       x="48"
+       y="1106.5195"
+       inkscape:export-filename="C:\Users\kozosgep\Desktop\HF Scraper\icons\editor_outdent_icon_x16.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g5337">
+      <text
+         id="text5245"
+         y="1111.8995"
+         x="3.0529625"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.84000015px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           y="1111.8995"
+           x="3.0529625"
+           id="tspan5243"
+           sodipodi:role="line">1</tspan></text>
+      <text
+         id="text5249"
+         y="1115.8995"
+         x="2.9528"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.84000015px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           y="1115.8995"
+           x="2.9528"
+           id="tspan5247"
+           sodipodi:role="line">2</tspan></text>
+      <text
+         id="text5253"
+         y="1119.8751"
+         x="2.9160874"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.84000015px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           y="1119.8751"
+           x="2.9160874"
+           id="tspan5251"
+           sodipodi:role="line">3</tspan></text>
+      <rect
+         y="1109.7695"
+         x="5"
+         height="1.5"
+         width="9"
+         id="rect5257"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.99999988;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5259"
+         width="9"
+         height="1.5"
+         x="5"
+         y="1113.7695" />
+      <rect
+         y="1117.7695"
+         x="5"
+         height="1.5"
+         width="9"
+         id="rect5261"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.99999988;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g5297"
+       transform="translate(0.125)">
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.99999988;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5263"
+         width="9"
+         height="1.5"
+         x="21"
+         y="1109.7695" />
+      <rect
+         y="1113.7695"
+         x="21"
+         height="1.5"
+         width="9"
+         id="rect5265"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.99999988;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5267"
+         width="9"
+         height="1.5"
+         x="21"
+         y="1117.7695" />
+      <circle
+         r="1.25"
+         cy="1110.5195"
+         cx="19"
+         id="path5269"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle5275"
+         cx="19"
+         cy="1114.5195"
+         r="1.25" />
+      <circle
+         r="1.25"
+         cy="1118.5195"
+         cx="19"
+         id="circle5277"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g5311">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5299"
+         d="m 34,1111.5195 3,3 -3,3 z"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="1110.5195"
+         x="38"
+         height="1.5"
+         width="8"
+         id="rect5301"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5303"
+         width="8"
+         height="1.5"
+         x="38"
+         y="1117.0195" />
+      <rect
+         y="1113.7695"
+         x="38"
+         height="1.5"
+         width="8"
+         id="rect5305"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g5321"
+       transform="translate(16)">
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 37,1111.5195 -3,3 3,3 z"
+         id="path5313"
+         inkscape:connector-curvature="0" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5315"
+         width="8"
+         height="1.5"
+         x="38"
+         y="1110.5195" />
+      <rect
+         y="1117.0195"
+         x="38"
+         height="1.5"
+         width="8"
+         id="rect5317"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5319"
+         width="8"
+         height="1.5"
+         x="38"
+         y="1113.7695" />
+    </g>
+  </g>
+</svg>

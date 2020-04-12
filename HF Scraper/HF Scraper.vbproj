@@ -48,6 +48,12 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cyotek.Windows.Forms.ColorPicker.1.7.2\lib\net35\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -72,6 +78,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="NumericUpDownLib, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.NumericUpDownLib.2.4.0\lib\net40\NumericUpDownLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -100,6 +109,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ColorDropDown.Designer.vb">
+      <DependentUpon>ColorDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\GeneralMessageDetail.Designer.vb">
       <DependentUpon>GeneralMessageDetail.vb</DependentUpon>
     </Compile>
@@ -173,6 +188,12 @@
     <Compile Include="Forms\EKretaLoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\SettingsForm.Designer.vb">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\StudentHomeworkReplyForm.Designer.vb">
       <DependentUpon>StudentHomeworkReplyForm.vb</DependentUpon>
     </Compile>
@@ -183,7 +204,7 @@
     <Compile Include="Modules\eKreta\eKretaFormatters.vb" />
     <Compile Include="Modules\eKreta\eKretaFunctions.vb" />
     <Compile Include="Modules\eKreta\eKretaStructures.vb" />
-    <Compile Include="Modules\GlobalConstants.vb" />
+    <Compile Include="Modules\Common.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -201,6 +222,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\ColorDropDown.resx">
+      <DependentUpon>ColorDropDown.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\GeneralMessageDetail.resx">
       <DependentUpon>GeneralMessageDetail.vb</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +260,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EKretaLoginForm.resx">
       <DependentUpon>EKretaLoginForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentHomeworkReplyForm.resx">
+      <DependentUpon>StudentHomeworkReplyForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -286,6 +316,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\button_right_icon_x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_forecolor_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_forecolor_icon_x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_backcolor_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_bold_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_italic_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_underline_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_strikethrough_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_align_left_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_align_center_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_align_right_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_align_justify_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_unorderedlist_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_orderedlist_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_indent_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor_outdent_icon_x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

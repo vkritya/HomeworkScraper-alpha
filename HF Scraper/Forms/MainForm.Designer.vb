@@ -27,8 +27,8 @@ Partial Class MainForm
         Me.TimetableTabPage = New System.Windows.Forms.TabPage()
         Me.TimetableSplitContainer = New System.Windows.Forms.SplitContainer()
         Me.WeekTimeSpanLabel = New System.Windows.Forms.Label()
-        Me.DecrementWeekButton = New System.Windows.Forms.Button()
-        Me.IncrementWeekButton = New System.Windows.Forms.Button()
+        Me.mySchoolWeek = New HF_Scraper.SchoolWeek()
+        Me.myHomeworkDetail = New HF_Scraper.HomeworkDetail()
         Me.MessagesTabPage = New System.Windows.Forms.TabPage()
         Me.MessagesSplitContainer = New System.Windows.Forms.SplitContainer()
         Me.MessagesListView = New System.Windows.Forms.ListView()
@@ -37,6 +37,7 @@ Partial Class MainForm
         Me.FeladasDatumaColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.HataridoColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.StatusColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.MessagesTimeSpanPicker = New HF_Scraper.TimeSpanPicker()
         Me.HomeworkTabPage = New System.Windows.Forms.TabPage()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.ListView1 = New System.Windows.Forms.ListView()
@@ -46,15 +47,14 @@ Partial Class MainForm
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.RequestTypeCheckBox = New System.Windows.Forms.CheckBox()
+        Me.HomeworkTimeSpanPicker = New HF_Scraper.TimeSpanPicker()
         Me.myToolStrip = New System.Windows.Forms.ToolStrip()
-        Me.SettingsButton = New System.Windows.Forms.ToolStripButton()
         Me.myToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.myStatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ProgressToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.mySchoolWeek = New HF_Scraper.SchoolWeek()
-        Me.myHomeworkDetail = New HF_Scraper.HomeworkDetail()
-        Me.MessagesTimeSpanPicker = New HF_Scraper.TimeSpanPicker()
-        Me.HomeworkTimeSpanPicker = New HF_Scraper.TimeSpanPicker()
+        Me.DecrementWeekButton = New System.Windows.Forms.Button()
+        Me.IncrementWeekButton = New System.Windows.Forms.Button()
+        Me.SettingsButton = New System.Windows.Forms.ToolStripButton()
         Me.myTabControl.SuspendLayout()
         Me.TimetableTabPage.SuspendLayout()
         CType(Me.TimetableSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,29 +144,30 @@ Partial Class MainForm
         Me.WeekTimeSpanLabel.TabIndex = 2
         Me.WeekTimeSpanLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'DecrementWeekButton
+        'mySchoolWeek
         '
-        Me.DecrementWeekButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DecrementWeekButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DecrementWeekButton.Image = Global.HF_Scraper.My.Resources.Resources.button_left_icon_x20
-        Me.DecrementWeekButton.Location = New System.Drawing.Point(715, 0)
-        Me.DecrementWeekButton.Name = "DecrementWeekButton"
-        Me.DecrementWeekButton.Size = New System.Drawing.Size(27, 27)
-        Me.DecrementWeekButton.TabIndex = 1
-        Me.DecrementWeekButton.TabStop = False
-        Me.DecrementWeekButton.UseVisualStyleBackColor = True
+        Me.mySchoolWeek.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.mySchoolWeek.AutoScroll = True
+        Me.mySchoolWeek.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.mySchoolWeek.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.mySchoolWeek.Location = New System.Drawing.Point(0, 26)
+        Me.mySchoolWeek.Margin = New System.Windows.Forms.Padding(0)
+        Me.mySchoolWeek.Name = "mySchoolWeek"
+        Me.mySchoolWeek.Size = New System.Drawing.Size(769, 448)
+        Me.mySchoolWeek.TabIndex = 0
         '
-        'IncrementWeekButton
+        'myHomeworkDetail
         '
-        Me.IncrementWeekButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.IncrementWeekButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.IncrementWeekButton.Image = Global.HF_Scraper.My.Resources.Resources.button_right_icon_x20
-        Me.IncrementWeekButton.Location = New System.Drawing.Point(742, 0)
-        Me.IncrementWeekButton.Name = "IncrementWeekButton"
-        Me.IncrementWeekButton.Size = New System.Drawing.Size(27, 27)
-        Me.IncrementWeekButton.TabIndex = 1
-        Me.IncrementWeekButton.TabStop = False
-        Me.IncrementWeekButton.UseVisualStyleBackColor = True
+        Me.myHomeworkDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.myHomeworkDetail.Location = New System.Drawing.Point(0, 0)
+        Me.myHomeworkDetail.Name = "myHomeworkDetail"
+        Me.myHomeworkDetail.Size = New System.Drawing.Size(225, 474)
+        Me.myHomeworkDetail.TabIndex = 5
+        Me.myHomeworkDetail.TabStop = False
         '
         'MessagesTabPage
         '
@@ -250,6 +251,17 @@ Partial Class MainForm
         Me.StatusColumnHeader.Text = "Státusz"
         Me.StatusColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.StatusColumnHeader.Width = 57
+        '
+        'MessagesTimeSpanPicker
+        '
+        Me.MessagesTimeSpanPicker.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MessagesTimeSpanPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.MessagesTimeSpanPicker.Location = New System.Drawing.Point(0, 401)
+        Me.MessagesTimeSpanPicker.MinimumSize = New System.Drawing.Size(154, 73)
+        Me.MessagesTimeSpanPicker.Name = "MessagesTimeSpanPicker"
+        Me.MessagesTimeSpanPicker.Size = New System.Drawing.Size(334, 73)
+        Me.MessagesTimeSpanPicker.TabIndex = 3
         '
         'HomeworkTabPage
         '
@@ -339,7 +351,7 @@ Partial Class MainForm
         Me.RequestTypeCheckBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RequestTypeCheckBox.AutoSize = True
         Me.RequestTypeCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.RequestTypeCheckBox.Location = New System.Drawing.Point(160, 382)
+        Me.RequestTypeCheckBox.Location = New System.Drawing.Point(158, 382)
         Me.RequestTypeCheckBox.Name = "RequestTypeCheckBox"
         Me.RequestTypeCheckBox.Size = New System.Drawing.Size(172, 17)
         Me.RequestTypeCheckBox.TabIndex = 7
@@ -350,6 +362,17 @@ Partial Class MainForm
         "ba!")
         Me.RequestTypeCheckBox.UseVisualStyleBackColor = True
         '
+        'HomeworkTimeSpanPicker
+        '
+        Me.HomeworkTimeSpanPicker.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.HomeworkTimeSpanPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.HomeworkTimeSpanPicker.Location = New System.Drawing.Point(0, 401)
+        Me.HomeworkTimeSpanPicker.MinimumSize = New System.Drawing.Size(154, 73)
+        Me.HomeworkTimeSpanPicker.Name = "HomeworkTimeSpanPicker"
+        Me.HomeworkTimeSpanPicker.Size = New System.Drawing.Size(334, 73)
+        Me.HomeworkTimeSpanPicker.TabIndex = 3
+        '
         'myToolStrip
         '
         Me.myToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
@@ -359,16 +382,6 @@ Partial Class MainForm
         Me.myToolStrip.Size = New System.Drawing.Size(1022, 25)
         Me.myToolStrip.TabIndex = 1
         Me.myToolStrip.Text = "ToolStrip1"
-        '
-        'SettingsButton
-        '
-        Me.SettingsButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.SettingsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SettingsButton.Image = Global.HF_Scraper.My.Resources.Resources.settings_icon_x32
-        Me.SettingsButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SettingsButton.Name = "SettingsButton"
-        Me.SettingsButton.Size = New System.Drawing.Size(23, 22)
-        Me.SettingsButton.Text = "Beállítások"
         '
         'myStatusStrip
         '
@@ -385,52 +398,39 @@ Partial Class MainForm
         Me.ProgressToolStripStatusLabel.Size = New System.Drawing.Size(120, 17)
         Me.ProgressToolStripStatusLabel.Text = "ToolStripStatusLabel1"
         '
-        'mySchoolWeek
+        'DecrementWeekButton
         '
-        Me.mySchoolWeek.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.mySchoolWeek.AutoScroll = True
-        Me.mySchoolWeek.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.mySchoolWeek.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mySchoolWeek.Location = New System.Drawing.Point(0, 26)
-        Me.mySchoolWeek.Margin = New System.Windows.Forms.Padding(0)
-        Me.mySchoolWeek.Name = "mySchoolWeek"
-        Me.mySchoolWeek.Size = New System.Drawing.Size(769, 448)
-        Me.mySchoolWeek.TabIndex = 0
+        Me.DecrementWeekButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DecrementWeekButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DecrementWeekButton.Image = Global.HF_Scraper.My.Resources.Resources.button_left_icon_x20
+        Me.DecrementWeekButton.Location = New System.Drawing.Point(715, 0)
+        Me.DecrementWeekButton.Name = "DecrementWeekButton"
+        Me.DecrementWeekButton.Size = New System.Drawing.Size(27, 27)
+        Me.DecrementWeekButton.TabIndex = 1
+        Me.DecrementWeekButton.TabStop = False
+        Me.DecrementWeekButton.UseVisualStyleBackColor = True
         '
-        'myHomeworkDetail
+        'IncrementWeekButton
         '
-        Me.myHomeworkDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.myHomeworkDetail.Location = New System.Drawing.Point(0, 0)
-        Me.myHomeworkDetail.Name = "myHomeworkDetail"
-        Me.myHomeworkDetail.Size = New System.Drawing.Size(227, 474)
-        Me.myHomeworkDetail.TabIndex = 5
-        Me.myHomeworkDetail.TabStop = False
+        Me.IncrementWeekButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.IncrementWeekButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.IncrementWeekButton.Image = Global.HF_Scraper.My.Resources.Resources.button_right_icon_x20
+        Me.IncrementWeekButton.Location = New System.Drawing.Point(742, 0)
+        Me.IncrementWeekButton.Name = "IncrementWeekButton"
+        Me.IncrementWeekButton.Size = New System.Drawing.Size(27, 27)
+        Me.IncrementWeekButton.TabIndex = 1
+        Me.IncrementWeekButton.TabStop = False
+        Me.IncrementWeekButton.UseVisualStyleBackColor = True
         '
-        'MessagesTimeSpanPicker
+        'SettingsButton
         '
-        Me.MessagesTimeSpanPicker.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MessagesTimeSpanPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.MessagesTimeSpanPicker.Location = New System.Drawing.Point(0, 401)
-        Me.MessagesTimeSpanPicker.MinimumSize = New System.Drawing.Size(154, 73)
-        Me.MessagesTimeSpanPicker.Name = "MessagesTimeSpanPicker"
-        Me.MessagesTimeSpanPicker.Size = New System.Drawing.Size(336, 73)
-        Me.MessagesTimeSpanPicker.TabIndex = 3
-        '
-        'HomeworkTimeSpanPicker
-        '
-        Me.HomeworkTimeSpanPicker.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.HomeworkTimeSpanPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.HomeworkTimeSpanPicker.Location = New System.Drawing.Point(0, 401)
-        Me.HomeworkTimeSpanPicker.MinimumSize = New System.Drawing.Size(154, 73)
-        Me.HomeworkTimeSpanPicker.Name = "HomeworkTimeSpanPicker"
-        Me.HomeworkTimeSpanPicker.Size = New System.Drawing.Size(336, 73)
-        Me.HomeworkTimeSpanPicker.TabIndex = 3
+        Me.SettingsButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.SettingsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.SettingsButton.Image = Global.HF_Scraper.My.Resources.Resources.settings_icon_x32
+        Me.SettingsButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SettingsButton.Name = "SettingsButton"
+        Me.SettingsButton.Size = New System.Drawing.Size(23, 22)
+        Me.SettingsButton.Text = "Beállítások"
         '
         'MainForm
         '

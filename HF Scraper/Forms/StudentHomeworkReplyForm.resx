@@ -117,65 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="editor_bold_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_bold_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_italic_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_italic_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_indent_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_indent_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Loading.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="house_icon_x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\house_icon_x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_align_center_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_align_center_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_forecolor_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_forecolor_icon_x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_align_left_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_align_left_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_align_justify_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_align_justify_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_strikethrough_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_strikethrough_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="button_right_icon_x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\button_right_icon_x20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="settings_icon_x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings_icon_x321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_align_right_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_align_right_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_unorderedlist_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_unorderedlist_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="checkmark_icon_x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\checkmark_icon_x20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_underline_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_underline_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_backcolor_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_backcolor_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="button_left_icon_x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\button_left_icon_x20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_orderedlist_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_orderedlist_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editor_outdent_icon_x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editor_outdent_icon_x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="myToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ForeColorToolStripSplitButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADmSURBVDhPpdAxasJwGIbxCB1E0MHBqV7AyTo5OBevICJu
+        HQRxsIhuHsLBAzh4h+LsJCKdSkE8QTuUIoIan/eLBZUYE/vAD/xC/H9JnICe4eIbCV2I2hhL6JC6LkQp
+        jTV6mGOKSDWhzXl0j7+fEDpt/UAMj9hiiFAVoI3a/NcbfpCy6UYD7JC1yasKHdqwKaA4vrDCy4kW9nhH
+        YBVoU5ASrqZ3/UXSpvOK0AEjm3zSO+trX72BFtggY9NFfWhD2Sb/2tA9HZsummCGB5v80+ZP6FW9+LQ5
+        vN4ppwNqPJN7D/33nwc4tQMBl4Vi3UVBJQAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

@@ -26,10 +26,10 @@ Public Class TimeSpanPicker
         End If
 
         'Match yyyy.MM.dd.   year e[2000;2999], month e[1;12], day e[1;31]
-        Dim myMatch = Regex.Match(mySender.Text, GlobalConstants.REGEX_YMD_MATCHER)
+        Dim myMatch = Regex.Match(mySender.Text, Common.Constant.REGEX_YMD)
         If Not myMatch.Success Then
             'Match mm.dd.   month e[1;12], day e[1;31]
-            myMatch = Regex.Match(mySender.Text, GlobalConstants.REGEX_MD_MATCHER)
+            myMatch = Regex.Match(mySender.Text, Common.Constant.REGEX_MD)
         End If
 
         If myMatch.Success Then
@@ -72,12 +72,12 @@ Public Class TimeSpanPicker
 
     Private Sub ThisWeekButtonClick() Handles ThisWeekButton.Click
         myFromDate = DateTime.Now.AddDays(-DateTime.Now.DayOfWeek + 1)
-        FromDateTextBox.Text = myFromDate.ToString(GlobalConstants.FORMAT_YMD)
-        ToDateTextBox.Text = Now.ToString(GlobalConstants.FORMAT_YMD)
+        FromDateTextBox.Text = myFromDate.ToString(Common.Constant.FORMAT_YMD)
+        ToDateTextBox.Text = Now.ToString(Common.Constant.FORMAT_YMD)
     End Sub
 
     Private Sub TimeSpanPickerLoad() Handles MyBase.Load
-        ToDateTextBox.Text = Now.ToString(GlobalConstants.FORMAT_YMD)
+        ToDateTextBox.Text = Now.ToString(Common.Constant.FORMAT_YMD)
     End Sub
 
     Private Sub ResizeHandler() Handles Me.Resize

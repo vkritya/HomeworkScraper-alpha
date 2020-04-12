@@ -1,5 +1,5 @@
 ﻿Public Module eKretaStructures
-    Structure Institute
+    Structure eKretaInstitute
         Dim InstituteID As ULong
         Dim InstituteCode As String
         Dim Name As String
@@ -7,7 +7,7 @@
         Dim City As String
     End Structure
 
-    Structure Lesson
+    Structure eKretaLesson
         Dim LessonID As ULong
         Dim StartTime As Date
         Dim EndTime As Date
@@ -18,7 +18,7 @@
         Dim IsTanuloHaziFeladatEnabled As Boolean
     End Structure
 
-    Structure Homework
+    Structure eKretaHomework
         Dim ID As ULong
         Dim Tantargy As String
         Dim Rogzito As String
@@ -38,7 +38,7 @@
         Dim RogzitoId As ULong
     End Structure
 
-    Structure Message
+    Structure eKretaMessage
         Dim ID As ULong
         Dim isRead As Boolean
 
@@ -49,9 +49,9 @@
         Dim MessageBody As String
         Dim MessageSubject As String
 
-        Dim Files As List(Of Fajl)
+        Dim Files As List(Of eKretaFajl)
     End Structure
-    Structure Fajl
+    Structure eKretaFajl
         Dim azonosito As ULong
         Dim fajlNev As String
     End Structure

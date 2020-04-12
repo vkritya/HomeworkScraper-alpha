@@ -1,16 +1,16 @@
 ﻿Public Class InstitutePicker
 
-    Property myInstitute As Institute
-    Dim myInstitutes As New List(Of Institute)
+    Property myInstitute As eKretaInstitute
+    Dim myInstitutes As New List(Of eKretaInstitute)
 
     Async Sub InstitutePicker_Shown() Handles Me.Shown
         InstituteListBox.Enabled = False
         OKButton.Enabled = False
         myInstitutes = Await eKreta.getInstitutes()
-        Dim SortedData As New SortedDictionary(Of String, List(Of Institute))
+        Dim SortedData As New SortedDictionary(Of String, List(Of eKretaInstitute))
         For Each e In myInstitutes
             If Not SortedData.ContainsKey(e.City) Then
-                SortedData.Add(e.City, New List(Of Institute))
+                SortedData.Add(e.City, New List(Of eKretaInstitute))
             End If
             SortedData(e.City).Add(e)
         Next
