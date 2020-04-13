@@ -109,6 +109,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ListViewItemComparer.vb" />
     <Compile Include="Controls\ColorDropDown.Designer.vb">
       <DependentUpon>ColorDropDown.vb</DependentUpon>
     </Compile>
@@ -300,12 +301,6 @@
     <None Include="Resources\checkmark_icon_x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\settings_icon_x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings_icon_x321.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Loading.png" />
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +356,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\editor_outdent_icon_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_icon_x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -9,7 +9,6 @@
         Me.Width = initialWidth
     End Sub
 
-
     Private loadComplete As Boolean = False
     Private Sub myWebBrowserNavigating(sender As WebBrowser, e As WebBrowserNavigatingEventArgs) Handles myWebBrowser.Navigating
         If loadComplete Then

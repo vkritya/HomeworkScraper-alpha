@@ -528,28 +528,25 @@ Namespace eKreta
 #End Region
 
 #Region "Web API"
-        Private myCookieTimeout As Date = Date.MinValue
         Private myCookies As CookieCollection
 
         Private Async Function getAuthCookie() As Task(Of CookieCollection)
-            If Now > myCookieTimeout Then
-                If myUsername = "" OrElse myPassword = "" Then
-                    Dim myEKretaLoginForm As New EKretaLoginForm
-                    myEKretaLoginForm.UsernameTextBox.Text = myUsername
-                    If myEKretaLoginForm.ShowDialog() = DialogResult.OK Then
-                        myCookies = Await getNewAuthCookie(myEKretaLoginForm.Username, myEKretaLoginForm.Password)
-                        If myCookies IsNot Nothing Then
-                            saveLoginData(myEKretaLoginForm.Username, myEKretaLoginForm.Password, myEKretaLoginForm.SaveLoginCheckBox.Checked)
-                            Return myCookies
-                        End If
+
+            If myUsername = "" OrElse myPassword = "" Then
+                Dim myEKretaLoginForm As New EKretaLoginForm
+                myEKretaLoginForm.UsernameTextBox.Text = myUsername
+                If myEKretaLoginForm.ShowDialog() = DialogResult.OK Then
+                    myCookies = Await getNewAuthCookie(myEKretaLoginForm.Username, myEKretaLoginForm.Password)
+                    If myCookies IsNot Nothing Then
+                        saveLoginData(myEKretaLoginForm.Username, myEKretaLoginForm.Password, myEKretaLoginForm.SaveLoginCheckBox.Checked)
+                        Return myCookies
                     End If
-                    MsgBox("Sikertelen bejelentkezés, a lekérés megszakítva")
-                    Return Nothing
-                Else
-                    Return Await getNewAuthCookie(myUsername, myPassword)
                 End If
+                MsgBox("Sikertelen bejelentkezés, a lekérés megszakítva")
+                Return Nothing
+            Else
+                Return Await getNewAuthCookie(myUsername, myPassword)
             End If
-            Return myCookies
         End Function
         Private Async Function getNewAuthCookie(username As String, password As String) As Task(Of CookieCollection)
             Try
@@ -566,11 +563,10 @@ Namespace eKreta
                 localCookies.Add(myHttpWebResponse.Cookies)
 
                 'Redirect Auth
-                myHttpWebResponse = Await WebAPIGETRequest(myInstitute.Url & myHttpWebResponse.Headers("Location"), localCookies)
-                localCookies.Add(myHttpWebResponse.Cookies)
+                'myHttpWebResponse = Await WebAPIGETRequest(myInstitute.Url & myHttpWebResponse.Headers("Location"), localCookies)
+                'localCookies.Add(myHttpWebResponse.Cookies)
 
-                If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
-                    myCookieTimeout = Now.AddSeconds(1800 - TOKEN_TIME_DEADZONE) 'add 30 min timeout
+                If myHttpWebResponse.StatusCode = HttpStatusCode.Found Then
                     Return localCookies
                 Else
                     Return Nothing

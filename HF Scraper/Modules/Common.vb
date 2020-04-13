@@ -22,12 +22,12 @@
         Structure Message
             Dim Service As ServiceType
             Dim MessageID As ULong
-            Dim myDate As Date
 
+            Dim myDate As Date
             Dim Sender As String
             Dim MessageText As String
-            Dim Comments As List(Of Comment)
 
+            Dim Comments As List(Of Comment)
             Dim Attachment As Object
         End Structure
         Structure Comment
@@ -42,7 +42,6 @@
 
         Structure Homework
             Dim Service As ServiceType
-            Dim fromMessage As Message
             Dim HomeworkID As ULong
 
             Dim myDate As Date
@@ -50,7 +49,17 @@
             Dim HomeworkText As String
             Dim myDeadlineDate As Date
 
+            Dim Comments As List(Of Comment)
             Dim Attachment As Object
+
+            Sub New(fromMessage As Message, deadline As Date)
+                Service = fromMessage.Service
+                HomeworkID = fromMessage.MessageID
+                HomeworkText = fromMessage.MessageText
+                myDeadlineDate = deadline
+                Comments = fromMessage.Comments
+                Attachment = fromMessage.Attachment
+            End Sub
         End Structure
     End Namespace
 End Namespace

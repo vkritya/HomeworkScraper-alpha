@@ -23,38 +23,51 @@ Partial Class MainForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim ListViewGroup1 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("e-Kréta", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup2 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("e-Kréta", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup3 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("e-Mail", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup4 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Facebook", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup5 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Messenger", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Google Classroom", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup7 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("e-Kréta", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup8 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("e-Kréta", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup9 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("e-Mail", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup10 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Facebook", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup11 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Messenger", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup12 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Google Classroom", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.myTabControl = New System.Windows.Forms.TabControl()
         Me.TimetableTabPage = New System.Windows.Forms.TabPage()
         Me.TimetableSplitContainer = New System.Windows.Forms.SplitContainer()
         Me.WeekTimeSpanLabel = New System.Windows.Forms.Label()
+        Me.DecrementWeekButton = New System.Windows.Forms.Button()
+        Me.IncrementWeekButton = New System.Windows.Forms.Button()
         Me.mySchoolWeek = New HF_Scraper.SchoolWeek()
         Me.myHomeworkDetail = New HF_Scraper.HomeworkDetail()
         Me.MessagesTabPage = New System.Windows.Forms.TabPage()
         Me.MessagesSplitContainer = New System.Windows.Forms.SplitContainer()
         Me.MessagesListView = New System.Windows.Forms.ListView()
-        Me.NullColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.FeladoColoumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.FeladasDatumaColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.HataridoColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.StatusColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.MessagesNullColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.MessagesSenderColoumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.MessagesSentDateColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.MessagesMessageTextColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MessagesTimeSpanPicker = New HF_Scraper.TimeSpanPicker()
         Me.HomeworkTabPage = New System.Windows.Forms.TabPage()
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.HomeworksSplitContainer = New System.Windows.Forms.SplitContainer()
+        Me.HomeworksListView = New System.Windows.Forms.ListView()
+        Me.NullColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.HomeworksSenderColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.HomeworksSentDateColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.HomeworksDeadlineColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.HomeworksTextColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.HomeworksStatusColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.RequestTypeCheckBox = New System.Windows.Forms.CheckBox()
         Me.HomeworkTimeSpanPicker = New HF_Scraper.TimeSpanPicker()
         Me.myToolStrip = New System.Windows.Forms.ToolStrip()
+        Me.SettingsButton = New System.Windows.Forms.ToolStripButton()
         Me.myToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.myStatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ProgressToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.DecrementWeekButton = New System.Windows.Forms.Button()
-        Me.IncrementWeekButton = New System.Windows.Forms.Button()
-        Me.SettingsButton = New System.Windows.Forms.ToolStripButton()
         Me.myTabControl.SuspendLayout()
         Me.TimetableTabPage.SuspendLayout()
         CType(Me.TimetableSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,10 +80,10 @@ Partial Class MainForm
         Me.MessagesSplitContainer.Panel2.SuspendLayout()
         Me.MessagesSplitContainer.SuspendLayout()
         Me.HomeworkTabPage.SuspendLayout()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainer1.Panel1.SuspendLayout()
-        Me.SplitContainer1.Panel2.SuspendLayout()
-        Me.SplitContainer1.SuspendLayout()
+        CType(Me.HomeworksSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.HomeworksSplitContainer.Panel1.SuspendLayout()
+        Me.HomeworksSplitContainer.Panel2.SuspendLayout()
+        Me.HomeworksSplitContainer.SuspendLayout()
         Me.myToolStrip.SuspendLayout()
         Me.myStatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -138,11 +151,35 @@ Partial Class MainForm
         '
         Me.WeekTimeSpanLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.WeekTimeSpanLabel.Font = New System.Drawing.Font("Courier New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
-        Me.WeekTimeSpanLabel.Location = New System.Drawing.Point(380, 4)
+        Me.WeekTimeSpanLabel.Location = New System.Drawing.Point(373, 4)
         Me.WeekTimeSpanLabel.Name = "WeekTimeSpanLabel"
-        Me.WeekTimeSpanLabel.Size = New System.Drawing.Size(329, 19)
+        Me.WeekTimeSpanLabel.Size = New System.Drawing.Size(336, 19)
         Me.WeekTimeSpanLabel.TabIndex = 2
         Me.WeekTimeSpanLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'DecrementWeekButton
+        '
+        Me.DecrementWeekButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DecrementWeekButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DecrementWeekButton.Image = Global.HF_Scraper.My.Resources.Resources.button_left_icon_x20
+        Me.DecrementWeekButton.Location = New System.Drawing.Point(715, 0)
+        Me.DecrementWeekButton.Name = "DecrementWeekButton"
+        Me.DecrementWeekButton.Size = New System.Drawing.Size(27, 27)
+        Me.DecrementWeekButton.TabIndex = 1
+        Me.DecrementWeekButton.TabStop = False
+        Me.DecrementWeekButton.UseVisualStyleBackColor = True
+        '
+        'IncrementWeekButton
+        '
+        Me.IncrementWeekButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.IncrementWeekButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.IncrementWeekButton.Image = Global.HF_Scraper.My.Resources.Resources.button_right_icon_x20
+        Me.IncrementWeekButton.Location = New System.Drawing.Point(742, 0)
+        Me.IncrementWeekButton.Name = "IncrementWeekButton"
+        Me.IncrementWeekButton.Size = New System.Drawing.Size(27, 27)
+        Me.IncrementWeekButton.TabIndex = 1
+        Me.IncrementWeekButton.TabStop = False
+        Me.IncrementWeekButton.UseVisualStyleBackColor = True
         '
         'mySchoolWeek
         '
@@ -163,9 +200,9 @@ Partial Class MainForm
         Me.myHomeworkDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.myHomeworkDetail.Location = New System.Drawing.Point(0, 0)
+        Me.myHomeworkDetail.Location = New System.Drawing.Point(1, 0)
         Me.myHomeworkDetail.Name = "myHomeworkDetail"
-        Me.myHomeworkDetail.Size = New System.Drawing.Size(225, 474)
+        Me.myHomeworkDetail.Size = New System.Drawing.Size(223, 474)
         Me.myHomeworkDetail.TabIndex = 5
         Me.myHomeworkDetail.TabStop = False
         '
@@ -212,60 +249,71 @@ Partial Class MainForm
         Me.MessagesListView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MessagesListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.NullColumnHeader, Me.FeladoColoumnHeader, Me.FeladasDatumaColumnHeader, Me.HataridoColumnHeader, Me.StatusColumnHeader})
+        Me.MessagesListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.MessagesNullColumnHeader, Me.MessagesSenderColoumnHeader, Me.MessagesSentDateColumnHeader, Me.MessagesMessageTextColumnHeader})
+        Me.MessagesListView.FullRowSelect = True
+        ListViewGroup1.Header = "e-Kréta"
+        ListViewGroup1.Name = "eKretaMessageGroup"
+        ListViewGroup2.Header = "e-Kréta"
+        ListViewGroup2.Name = "eKretaHomeworkGroup"
+        ListViewGroup3.Header = "e-Mail"
+        ListViewGroup3.Name = "eMailGroup"
+        ListViewGroup4.Header = "Facebook"
+        ListViewGroup4.Name = "FacebookGroup"
+        ListViewGroup5.Header = "Messenger"
+        ListViewGroup5.Name = "MessengerGroup"
+        ListViewGroup6.Header = "Google Classroom"
+        ListViewGroup6.Name = "ClassroomGroup"
+        Me.MessagesListView.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1, ListViewGroup2, ListViewGroup3, ListViewGroup4, ListViewGroup5, ListViewGroup6})
         Me.MessagesListView.Location = New System.Drawing.Point(0, 0)
+        Me.MessagesListView.MultiSelect = False
         Me.MessagesListView.Name = "MessagesListView"
+        Me.MessagesListView.OwnerDraw = True
         Me.MessagesListView.Size = New System.Drawing.Size(662, 474)
         Me.MessagesListView.TabIndex = 1
+        Me.MessagesListView.TabStop = False
+        Me.MessagesListView.Tag = "-1"
         Me.MessagesListView.UseCompatibleStateImageBehavior = False
         Me.MessagesListView.View = System.Windows.Forms.View.Details
         '
-        'NullColumnHeader
+        'MessagesNullColumnHeader
         '
-        Me.NullColumnHeader.DisplayIndex = 4
-        Me.NullColumnHeader.Width = 0
+        Me.MessagesNullColumnHeader.DisplayIndex = 3
+        Me.MessagesNullColumnHeader.Width = 0
         '
-        'FeladoColoumnHeader
+        'MessagesSenderColoumnHeader
         '
-        Me.FeladoColoumnHeader.DisplayIndex = 0
-        Me.FeladoColoumnHeader.Text = "Feladó"
-        Me.FeladoColoumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.FeladoColoumnHeader.Width = 138
+        Me.MessagesSenderColoumnHeader.DisplayIndex = 0
+        Me.MessagesSenderColoumnHeader.Text = "Feladó"
+        Me.MessagesSenderColoumnHeader.Width = 140
         '
-        'FeladasDatumaColumnHeader
+        'MessagesSentDateColumnHeader
         '
-        Me.FeladasDatumaColumnHeader.DisplayIndex = 1
-        Me.FeladasDatumaColumnHeader.Text = "Feladás Dátuma"
-        Me.FeladasDatumaColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.FeladasDatumaColumnHeader.Width = 104
+        Me.MessagesSentDateColumnHeader.DisplayIndex = 1
+        Me.MessagesSentDateColumnHeader.Text = "Feladás Dátuma"
+        Me.MessagesSentDateColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.MessagesSentDateColumnHeader.Width = 130
         '
-        'HataridoColumnHeader
+        'MessagesMessageTextColumnHeader
         '
-        Me.HataridoColumnHeader.DisplayIndex = 2
-        Me.HataridoColumnHeader.Text = "Határidő"
-        Me.HataridoColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'StatusColumnHeader
-        '
-        Me.StatusColumnHeader.DisplayIndex = 3
-        Me.StatusColumnHeader.Text = "Státusz"
-        Me.StatusColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.StatusColumnHeader.Width = 57
+        Me.MessagesMessageTextColumnHeader.DisplayIndex = 2
+        Me.MessagesMessageTextColumnHeader.Text = "Üzenet Szövege"
+        Me.MessagesMessageTextColumnHeader.Width = 200
         '
         'MessagesTimeSpanPicker
         '
         Me.MessagesTimeSpanPicker.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MessagesTimeSpanPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.MessagesTimeSpanPicker.Location = New System.Drawing.Point(0, 401)
+        Me.MessagesTimeSpanPicker.HomeworkDeadline = Nothing
+        Me.MessagesTimeSpanPicker.Location = New System.Drawing.Point(1, 401)
         Me.MessagesTimeSpanPicker.MinimumSize = New System.Drawing.Size(154, 73)
         Me.MessagesTimeSpanPicker.Name = "MessagesTimeSpanPicker"
-        Me.MessagesTimeSpanPicker.Size = New System.Drawing.Size(334, 73)
+        Me.MessagesTimeSpanPicker.Size = New System.Drawing.Size(332, 73)
         Me.MessagesTimeSpanPicker.TabIndex = 3
         '
         'HomeworkTabPage
         '
-        Me.HomeworkTabPage.Controls.Add(Me.SplitContainer1)
+        Me.HomeworkTabPage.Controls.Add(Me.HomeworksSplitContainer)
         Me.HomeworkTabPage.Location = New System.Drawing.Point(4, 22)
         Me.HomeworkTabPage.Name = "HomeworkTabPage"
         Me.HomeworkTabPage.Size = New System.Drawing.Size(1014, 486)
@@ -273,85 +321,108 @@ Partial Class MainForm
         Me.HomeworkTabPage.Text = "Házi Feladatok"
         Me.HomeworkTabPage.UseVisualStyleBackColor = True
         '
-        'SplitContainer1
+        'HomeworksSplitContainer
         '
-        Me.SplitContainer1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.HomeworksSplitContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SplitContainer1.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.SplitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit
-        Me.SplitContainer1.Location = New System.Drawing.Point(6, 6)
-        Me.SplitContainer1.Name = "SplitContainer1"
+        Me.HomeworksSplitContainer.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.HomeworksSplitContainer.Cursor = System.Windows.Forms.Cursors.VSplit
+        Me.HomeworksSplitContainer.Location = New System.Drawing.Point(6, 6)
+        Me.HomeworksSplitContainer.Name = "HomeworksSplitContainer"
         '
-        'SplitContainer1.Panel1
+        'HomeworksSplitContainer.Panel1
         '
-        Me.SplitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ListView1)
-        Me.SplitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.HomeworksSplitContainer.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.HomeworksSplitContainer.Panel1.Controls.Add(Me.HomeworksListView)
+        Me.HomeworksSplitContainer.Panel1.Cursor = System.Windows.Forms.Cursors.Default
         '
-        'SplitContainer1.Panel2
+        'HomeworksSplitContainer.Panel2
         '
-        Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control
-        Me.SplitContainer1.Panel2.Controls.Add(Me.RequestTypeCheckBox)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.HomeworkTimeSpanPicker)
-        Me.SplitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default
-        Me.SplitContainer1.Size = New System.Drawing.Size(1004, 474)
-        Me.SplitContainer1.SplitterDistance = 662
-        Me.SplitContainer1.SplitterWidth = 6
-        Me.SplitContainer1.TabIndex = 3
-        Me.SplitContainer1.TabStop = False
+        Me.HomeworksSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control
+        Me.HomeworksSplitContainer.Panel2.Controls.Add(Me.RequestTypeCheckBox)
+        Me.HomeworksSplitContainer.Panel2.Controls.Add(Me.HomeworkTimeSpanPicker)
+        Me.HomeworksSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default
+        Me.HomeworksSplitContainer.Size = New System.Drawing.Size(1004, 474)
+        Me.HomeworksSplitContainer.SplitterDistance = 662
+        Me.HomeworksSplitContainer.SplitterWidth = 6
+        Me.HomeworksSplitContainer.TabIndex = 3
+        Me.HomeworksSplitContainer.TabStop = False
         '
-        'ListView1
+        'HomeworksListView
         '
-        Me.ListView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.HomeworksListView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
-        Me.ListView1.Location = New System.Drawing.Point(0, 0)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(662, 474)
-        Me.ListView1.TabIndex = 1
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
+        Me.HomeworksListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.NullColumnHeader, Me.HomeworksSenderColumnHeader, Me.HomeworksSentDateColumnHeader, Me.HomeworksDeadlineColumnHeader, Me.HomeworksTextColumnHeader, Me.HomeworksStatusColumnHeader})
+        Me.HomeworksListView.FullRowSelect = True
+        ListViewGroup7.Header = "e-Kréta"
+        ListViewGroup7.Name = "eKretaMessageGroup"
+        ListViewGroup8.Header = "e-Kréta"
+        ListViewGroup8.Name = "eKretaHomeworkGroup"
+        ListViewGroup9.Header = "e-Mail"
+        ListViewGroup9.Name = "eMailGroup"
+        ListViewGroup10.Header = "Facebook"
+        ListViewGroup10.Name = "FacebookGroup"
+        ListViewGroup11.Header = "Messenger"
+        ListViewGroup11.Name = "MessengerGroup"
+        ListViewGroup12.Header = "Google Classroom"
+        ListViewGroup12.Name = "ClassroomGroup"
+        Me.HomeworksListView.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup7, ListViewGroup8, ListViewGroup9, ListViewGroup10, ListViewGroup11, ListViewGroup12})
+        Me.HomeworksListView.Location = New System.Drawing.Point(0, 0)
+        Me.HomeworksListView.MultiSelect = False
+        Me.HomeworksListView.Name = "HomeworksListView"
+        Me.HomeworksListView.OwnerDraw = True
+        Me.HomeworksListView.Size = New System.Drawing.Size(662, 474)
+        Me.HomeworksListView.TabIndex = 1
+        Me.HomeworksListView.TabStop = False
+        Me.HomeworksListView.Tag = "-1"
+        Me.HomeworksListView.UseCompatibleStateImageBehavior = False
+        Me.HomeworksListView.View = System.Windows.Forms.View.Details
         '
-        'ColumnHeader1
+        'NullColumnHeader
         '
-        Me.ColumnHeader1.DisplayIndex = 4
-        Me.ColumnHeader1.Width = 0
+        Me.NullColumnHeader.DisplayIndex = 5
+        Me.NullColumnHeader.Width = 0
         '
-        'ColumnHeader2
+        'HomeworksSenderColumnHeader
         '
-        Me.ColumnHeader2.DisplayIndex = 0
-        Me.ColumnHeader2.Text = "Feladó"
-        Me.ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ColumnHeader2.Width = 138
+        Me.HomeworksSenderColumnHeader.DisplayIndex = 0
+        Me.HomeworksSenderColumnHeader.Text = "Feladó"
+        Me.HomeworksSenderColumnHeader.Width = 140
         '
-        'ColumnHeader3
+        'HomeworksSentDateColumnHeader
         '
-        Me.ColumnHeader3.DisplayIndex = 1
-        Me.ColumnHeader3.Text = "Feladás Dátuma"
-        Me.ColumnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ColumnHeader3.Width = 104
+        Me.HomeworksSentDateColumnHeader.DisplayIndex = 1
+        Me.HomeworksSentDateColumnHeader.Text = "Feladás Dátuma"
+        Me.HomeworksSentDateColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.HomeworksSentDateColumnHeader.Width = 100
         '
-        'ColumnHeader4
+        'HomeworksDeadlineColumnHeader
         '
-        Me.ColumnHeader4.DisplayIndex = 2
-        Me.ColumnHeader4.Text = "Határidő"
-        Me.ColumnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.HomeworksDeadlineColumnHeader.DisplayIndex = 2
+        Me.HomeworksDeadlineColumnHeader.Text = "Határidő"
+        Me.HomeworksDeadlineColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.HomeworksDeadlineColumnHeader.Width = 100
         '
-        'ColumnHeader5
+        'HomeworksTextColumnHeader
         '
-        Me.ColumnHeader5.DisplayIndex = 3
-        Me.ColumnHeader5.Text = "Státusz"
-        Me.ColumnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ColumnHeader5.Width = 57
+        Me.HomeworksTextColumnHeader.DisplayIndex = 3
+        Me.HomeworksTextColumnHeader.Text = "Házi Feladat Szövege"
+        Me.HomeworksTextColumnHeader.Width = 150
+        '
+        'HomeworksStatusColumnHeader
+        '
+        Me.HomeworksStatusColumnHeader.DisplayIndex = 4
+        Me.HomeworksStatusColumnHeader.Text = "Státusz"
         '
         'RequestTypeCheckBox
         '
         Me.RequestTypeCheckBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RequestTypeCheckBox.AutoSize = True
         Me.RequestTypeCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.RequestTypeCheckBox.Location = New System.Drawing.Point(158, 382)
+        Me.RequestTypeCheckBox.Location = New System.Drawing.Point(157, 382)
+        Me.RequestTypeCheckBox.Margin = New System.Windows.Forms.Padding(0)
         Me.RequestTypeCheckBox.Name = "RequestTypeCheckBox"
         Me.RequestTypeCheckBox.Size = New System.Drawing.Size(172, 17)
         Me.RequestTypeCheckBox.TabIndex = 7
@@ -367,10 +438,12 @@ Partial Class MainForm
         Me.HomeworkTimeSpanPicker.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.HomeworkTimeSpanPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.HomeworkTimeSpanPicker.Location = New System.Drawing.Point(0, 401)
+        Me.HomeworkTimeSpanPicker.HomeworkDeadline = Me.RequestTypeCheckBox
+        Me.HomeworkTimeSpanPicker.Location = New System.Drawing.Point(1, 401)
+        Me.HomeworkTimeSpanPicker.Margin = New System.Windows.Forms.Padding(0)
         Me.HomeworkTimeSpanPicker.MinimumSize = New System.Drawing.Size(154, 73)
         Me.HomeworkTimeSpanPicker.Name = "HomeworkTimeSpanPicker"
-        Me.HomeworkTimeSpanPicker.Size = New System.Drawing.Size(334, 73)
+        Me.HomeworkTimeSpanPicker.Size = New System.Drawing.Size(332, 73)
         Me.HomeworkTimeSpanPicker.TabIndex = 3
         '
         'myToolStrip
@@ -382,6 +455,16 @@ Partial Class MainForm
         Me.myToolStrip.Size = New System.Drawing.Size(1022, 25)
         Me.myToolStrip.TabIndex = 1
         Me.myToolStrip.Text = "ToolStrip1"
+        '
+        'SettingsButton
+        '
+        Me.SettingsButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.SettingsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.SettingsButton.Image = CType(resources.GetObject("SettingsButton.Image"), System.Drawing.Image)
+        Me.SettingsButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SettingsButton.Name = "SettingsButton"
+        Me.SettingsButton.Size = New System.Drawing.Size(23, 22)
+        Me.SettingsButton.Text = "Beállítások"
         '
         'myStatusStrip
         '
@@ -397,40 +480,6 @@ Partial Class MainForm
         Me.ProgressToolStripStatusLabel.Name = "ProgressToolStripStatusLabel"
         Me.ProgressToolStripStatusLabel.Size = New System.Drawing.Size(120, 17)
         Me.ProgressToolStripStatusLabel.Text = "ToolStripStatusLabel1"
-        '
-        'DecrementWeekButton
-        '
-        Me.DecrementWeekButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DecrementWeekButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DecrementWeekButton.Image = Global.HF_Scraper.My.Resources.Resources.button_left_icon_x20
-        Me.DecrementWeekButton.Location = New System.Drawing.Point(715, 0)
-        Me.DecrementWeekButton.Name = "DecrementWeekButton"
-        Me.DecrementWeekButton.Size = New System.Drawing.Size(27, 27)
-        Me.DecrementWeekButton.TabIndex = 1
-        Me.DecrementWeekButton.TabStop = False
-        Me.DecrementWeekButton.UseVisualStyleBackColor = True
-        '
-        'IncrementWeekButton
-        '
-        Me.IncrementWeekButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.IncrementWeekButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.IncrementWeekButton.Image = Global.HF_Scraper.My.Resources.Resources.button_right_icon_x20
-        Me.IncrementWeekButton.Location = New System.Drawing.Point(742, 0)
-        Me.IncrementWeekButton.Name = "IncrementWeekButton"
-        Me.IncrementWeekButton.Size = New System.Drawing.Size(27, 27)
-        Me.IncrementWeekButton.TabIndex = 1
-        Me.IncrementWeekButton.TabStop = False
-        Me.IncrementWeekButton.UseVisualStyleBackColor = True
-        '
-        'SettingsButton
-        '
-        Me.SettingsButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.SettingsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SettingsButton.Image = Global.HF_Scraper.My.Resources.Resources.settings_icon_x32
-        Me.SettingsButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SettingsButton.Name = "SettingsButton"
-        Me.SettingsButton.Size = New System.Drawing.Size(23, 22)
-        Me.SettingsButton.Text = "Beállítások"
         '
         'MainForm
         '
@@ -456,11 +505,11 @@ Partial Class MainForm
         CType(Me.MessagesSplitContainer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MessagesSplitContainer.ResumeLayout(False)
         Me.HomeworkTabPage.ResumeLayout(False)
-        Me.SplitContainer1.Panel1.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.PerformLayout()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SplitContainer1.ResumeLayout(False)
+        Me.HomeworksSplitContainer.Panel1.ResumeLayout(False)
+        Me.HomeworksSplitContainer.Panel2.ResumeLayout(False)
+        Me.HomeworksSplitContainer.Panel2.PerformLayout()
+        CType(Me.HomeworksSplitContainer, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.HomeworksSplitContainer.ResumeLayout(False)
         Me.myToolStrip.ResumeLayout(False)
         Me.myToolStrip.PerformLayout()
         Me.myStatusStrip.ResumeLayout(False)
@@ -476,11 +525,10 @@ Partial Class MainForm
     Friend WithEvents myToolStrip As ToolStrip
     Friend WithEvents SettingsButton As ToolStripButton
     Friend WithEvents MessagesListView As ListView
-    Friend WithEvents NullColumnHeader As ColumnHeader
-    Friend WithEvents FeladoColoumnHeader As ColumnHeader
-    Friend WithEvents FeladasDatumaColumnHeader As ColumnHeader
-    Friend WithEvents HataridoColumnHeader As ColumnHeader
-    Friend WithEvents StatusColumnHeader As ColumnHeader
+    Friend WithEvents MessagesNullColumnHeader As ColumnHeader
+    Friend WithEvents MessagesSenderColoumnHeader As ColumnHeader
+    Friend WithEvents MessagesSentDateColumnHeader As ColumnHeader
+    Friend WithEvents MessagesMessageTextColumnHeader As ColumnHeader
     Friend WithEvents TimetableSplitContainer As SplitContainer
     Friend WithEvents MessagesSplitContainer As SplitContainer
     Friend WithEvents MessagesTimeSpanPicker As TimeSpanPicker
@@ -488,13 +536,13 @@ Partial Class MainForm
     Friend WithEvents myToolTip As ToolTip
     Friend WithEvents myStatusStrip As StatusStrip
     Friend WithEvents HomeworkTabPage As TabPage
-    Friend WithEvents SplitContainer1 As SplitContainer
-    Friend WithEvents ListView1 As ListView
-    Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents ColumnHeader2 As ColumnHeader
-    Friend WithEvents ColumnHeader3 As ColumnHeader
-    Friend WithEvents ColumnHeader4 As ColumnHeader
-    Friend WithEvents ColumnHeader5 As ColumnHeader
+    Friend WithEvents HomeworksSplitContainer As SplitContainer
+    Friend WithEvents HomeworksListView As ListView
+    Friend WithEvents NullColumnHeader As ColumnHeader
+    Friend WithEvents HomeworksSenderColumnHeader As ColumnHeader
+    Friend WithEvents HomeworksSentDateColumnHeader As ColumnHeader
+    Friend WithEvents HomeworksDeadlineColumnHeader As ColumnHeader
+    Friend WithEvents HomeworksStatusColumnHeader As ColumnHeader
     Friend WithEvents HomeworkTimeSpanPicker As TimeSpanPicker
     Friend WithEvents RequestTypeCheckBox As CheckBox
     Friend WithEvents ProgressToolStripStatusLabel As ToolStripStatusLabel
@@ -502,4 +550,5 @@ Partial Class MainForm
     Friend WithEvents WeekTimeSpanLabel As Label
     Friend WithEvents DecrementWeekButton As Button
     Friend WithEvents IncrementWeekButton As Button
+    Friend WithEvents HomeworksTextColumnHeader As ColumnHeader
 End Class

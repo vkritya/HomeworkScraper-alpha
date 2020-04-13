@@ -3,6 +3,8 @@ Public Class TimeSpanPicker
 
     Event FetchButtonClicked(fromDate As Date, toDate As Date) 'enabledServiceIDs As List(Of ULong)
 
+    Property HomeworkDeadline As CheckBox = Nothing
+
     Dim myFromDate As Date = Nothing
     Dim myToDate As Date = Nothing
 
@@ -56,24 +58,36 @@ Public Class TimeSpanPicker
         End If
     End Sub
 
-    Private Sub DateTextBoxFocusGained(sender As Object, e As MouseEventArgs) Handles FromDateTextBox.Click, ToDateTextBox.Click
-        Dim mySender As TextBox = sender
-        mySender.SelectAll()
-    End Sub
-
     Private Sub FetchButtonClick() Handles FetchButton.Click
-        If myFromDate <> Nothing And myToDate <> Nothing Then
-            RaiseEvent FetchButtonClicked(myFromDate, myToDate)
-        ElseIf MessageBox.Show("Nem adtál meg egy dátumot (vagy hibásak), frissítse a program a jelenlegi hetet?", "Hibás vagy hiányzó dátumok", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-            ThisWeekButtonClick()
-            RaiseEvent FetchButtonClicked(myFromDate, DateTime.Now)
+        If HomeworkDeadline Is Nothing OrElse Not HomeworkDeadline.Checked Then
+            If myFromDate <> Nothing And myToDate <> Nothing Then
+                RaiseEvent FetchButtonClicked(myFromDate, myToDate)
+            ElseIf MessageBox.Show("Nem adtál meg egy dátumot (vagy hibásak), frissítse a program a jelenlegi hetet?", "Hibás vagy hiányzó dátumok", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+                ThisWeekButtonClick()
+                RaiseEvent FetchButtonClicked(myFromDate, DateTime.Now)
+            End If
+        Else
+            If myFromDate <> Nothing Then
+                RaiseEvent FetchButtonClicked(myFromDate, Date.MaxValue)
+            ElseIf MessageBox.Show("Nem adtál meg kezdődátumot (vagy hibás), frissítse a program a mai naptól beadandóakat?", "Hibás vagy hiányzó dátumok", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+                FromDateTextBox.Text = Now.ToString(Common.Constant.FORMAT_YMD)
+                FromDateLabel.Text = Now.ToString(Common.Constant.FORMAT_YMD)
+                RaiseEvent FetchButtonClicked(myFromDate, Date.MaxValue)
+            End If
         End If
     End Sub
 
     Private Sub ThisWeekButtonClick() Handles ThisWeekButton.Click
-        myFromDate = DateTime.Now.AddDays(-DateTime.Now.DayOfWeek + 1)
-        FromDateTextBox.Text = myFromDate.ToString(Common.Constant.FORMAT_YMD)
-        ToDateTextBox.Text = Now.ToString(Common.Constant.FORMAT_YMD)
+        If HomeworkDeadline Is Nothing Then
+            myFromDate = DateTime.Now.AddDays(-DateTime.Now.DayOfWeek + 1)
+            FromDateTextBox.Text = myFromDate.ToString(Common.Constant.FORMAT_YMD)
+            ToDateTextBox.Text = Now.ToString(Common.Constant.FORMAT_YMD)
+        Else
+            myFromDate = DateTime.Now.AddDays(-DateTime.Now.DayOfWeek + 1)
+            FromDateTextBox.Text = myFromDate.ToString(Common.Constant.FORMAT_YMD)
+            myToDate = DateTime.Now.AddDays(-DateTime.Now.DayOfWeek + 7)
+            ToDateTextBox.Text = myToDate.ToString(Common.Constant.FORMAT_YMD)
+        End If
     End Sub
 
     Private Sub TimeSpanPickerLoad() Handles MyBase.Load
