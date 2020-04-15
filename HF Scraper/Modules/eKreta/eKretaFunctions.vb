@@ -192,14 +192,14 @@ Namespace eKreta
 
         Private Function getNewAccessToken(username As String, password As String) As String
             Try
-                Return tokenResponseHandler(myPOSTRequest(Of TokenResponse)($"{myInstitute.Url}/idp/api/v1/Token", $"institute_code={myInstitute.InstituteID}&userName={username}&password={password}&grant_type=password&client_id=919e0c1c-76a2-4646-a2fb-7085bbbf3c56"))
+                Return tokenResponseHandler(myPOSTRequest(Of TokenResponse)($"{myInstitute.Url}/idp/api/v1/Token", $"institute_code={myInstitute.InstituteCode}&userName={username}&password={password}&grant_type=password&client_id=919e0c1c-76a2-4646-a2fb-7085bbbf3c56"))
             Catch ex As Exception
             End Try
             Return ""
         End Function
         Private Function getNewAccessToken(refreshToken As String) As String
             Try
-                Return tokenResponseHandler(myPOSTRequest(Of TokenResponse)($"{myInstitute.Url}/idp/api/v1/Token", $"institute_code={myInstitute.InstituteID}&refresh_token={refreshToken}&grant_type=refresh_token&client_id=919e0c1c-76a2-4646-a2fb-7085bbbf3c56"))
+                Return tokenResponseHandler(myPOSTRequest(Of TokenResponse)($"{myInstitute.Url}/idp/api/v1/Token", $"institute_code={myInstitute.InstituteCode}&refresh_token={refreshToken}&grant_type=refresh_token&client_id=919e0c1c-76a2-4646-a2fb-7085bbbf3c56"))
             Catch ex As Exception
             End Try
             Return ""
