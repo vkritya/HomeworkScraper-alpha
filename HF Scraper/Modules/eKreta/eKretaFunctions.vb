@@ -6,7 +6,7 @@ Namespace eKreta
     Module eKreta
         Private Const API_KEY = "7856d350-1fda-45f5-822d-e1a2f3f1acf0"
         Private Const TOKEN_TIME_DEADZONE = 120
-        Private Const REGISTRY_KEY = "HKEY_CURRENT_USER\Software\HomeWorkScraper"
+        Private Const REGISTRY_KEY = "HKEY_CURRENT_USER\Software\HomeworkScraper"
 
         Private myUsername = ""
         Private myPassword = ""
@@ -26,7 +26,7 @@ Namespace eKreta
             End If
         End Sub
         Private Sub setRegistry(key As String, value As Object, kind As Microsoft.Win32.RegistryValueKind)
-            My.Computer.Registry.CurrentUser.CreateSubKey("Software\HomeWorkScraper")
+            My.Computer.Registry.CurrentUser.CreateSubKey("Software\HomeworkScraper")
             My.Computer.Registry.SetValue(REGISTRY_KEY, key, value, kind)
         End Sub
         Private Function getRegistry(key As String) As Object
