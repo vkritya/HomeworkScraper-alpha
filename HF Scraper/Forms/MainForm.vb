@@ -1,4 +1,10 @@
-﻿Public Class MainForm
+﻿Class MainForm
+    'Because VS Designer is drunk
+    Private Sub LoadDesignerFix() Handles MyBase.Load
+        MessagesTimeSpanPicker.Size = New Size(336, 73)
+        HomeworkTimeSpanPicker.Size = New Size(336, 73)
+        RequestTypeCheckBox.Location = New Point(160, 382)
+    End Sub
 
     Private Async Sub MainFormShown(sender As Object, e As EventArgs) Handles MyBase.Shown
         'eKreta
@@ -7,20 +13,9 @@
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        Dim suppressNonAwaitedCallWarning = setSchoolWeek(Now, myCancelTokenSource.Token) 'Workaround
 
-        setSchoolWeek(Now, myCancelTokenSource.Token)
 
-        'Dim studentHomeworkReply As New StudentHomeworkReplyForm(myHomeworkDetail)
-        'studentHomeworkReply.Show()
-
-        'getInstituteList()
-        'Dim token = eKreta.getAccessToken(myInstitute.Url, myInstitute.InstituteCode)
-        'eKreta.getAccessToken("https://klik037632001.e-kreta.hu", "klik037632001", "YTk2NTcwYTgtMDE5Yy00NjBiLWIwMWUtODYwNWQ2YmQxODBmIyM3OThmYjliOS1kZTBmLTRiMTQtOTE4Yy0xNTQzMWIyNjQxOTM=")
-        'Dim asd = Await eKretaFunctions.getHomeworkList("https://klik037632001.e-kreta.hu", "2020-03-30", "2020-03-30", getAccessToken(myInstitute.Url, myInstitute.InstituteCode))
-        'Dim asd = Await getMessages(getAccessToken(myInstitute.Url, myInstitute.InstituteId))
-        'downloadFile(asd(2).Files(0), "C:\Users\kozosgep\Desktop\cuccer.docx", getAccessToken(myInstitute.Url, myInstitute.InstituteId))
-        'SchoolDay1.Initialize(#2020/04/01 8:00#, #2020/04/01 13:25#, asd.ToArray)
-        'MsgBox($"{Me.TimetableSplitContainer.Panel2.Size.Width}")
     End Sub
 
     Private Sub SettingsButtonClick() Handles SettingsButton.Click
@@ -94,7 +89,7 @@
         End If
     End Sub
 
-    'GET Messenger, Facebook, e-mail, e-ügyintézés, classroom
+    'GET Messenger, Facebook, e-mail, e-ügyintézés, Classroom
     Private Async Sub MessagesTimeSpanPickerClick(fromDate As Date, toDate As Date) Handles MessagesTimeSpanPicker.FetchButtonClicked
         MessagesListView.Items.Clear()
         MessagesTimeSpanPicker.Enabled = False
@@ -125,7 +120,6 @@
 
         MessagesTimeSpanPicker.Enabled = True
     End Sub
-
     Private Sub addMessage(myMessage As Common.Struct.Message)
         Dim item As New ListViewItem
         item.Group = MessagesListView.Groups(myMessage.Service)
@@ -182,6 +176,7 @@
                 myHomework.HomeworkID = eKretaHomework.ID
                 myHomework.myDate = eKretaHomework.FeladasDatuma
                 myHomework.myDeadlineDate = eKretaHomework.Hatarido
+                myHomework.Subject = eKretaHomework.Tantargy
                 myHomework.Sender = eKretaHomework.Rogzito
                 myHomework.HomeworkText = eKretaHomework.Szoveg
                 myHomework.Attachment = Nothing
@@ -210,7 +205,6 @@
         HomeworkTimeSpanPicker.Enabled = True
         RequestTypeCheckBox.Enabled = True
     End Sub
-
     Private Sub addHomework(myHomework As Common.Struct.Homework)
         Dim item As New ListViewItem
         item.Group = HomeworksListView.Groups(myHomework.Service)
@@ -221,6 +215,19 @@
         item.Tag = myHomework
 
         HomeworksListView.Items.Add(item)
+    End Sub
+    Private Function getHomework() As Common.Struct.Homework
+        If HomeworksListView.SelectedItems.Count <> 0 Then
+            Dim item = HomeworksListView.SelectedItems.Item(0)
+            Return item.Tag
+        End If
+        Return Nothing
+    End Function
+
+    Private Sub HomeworksListViewItemChanged(sender As ListView, e As EventArgs) Handles HomeworksListView.SelectedIndexChanged
+        If sender.SelectedItems.Count <> 0 Then
+            HomeworksHomeworkDetail.setHomework(sender.SelectedItems(0).Tag)
+        End If
     End Sub
 #End Region
 

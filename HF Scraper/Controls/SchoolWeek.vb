@@ -1,4 +1,4 @@
-﻿Public Class SchoolWeek
+﻿Class SchoolWeek
 
     Private myMainForm As MainForm
     'For Designer

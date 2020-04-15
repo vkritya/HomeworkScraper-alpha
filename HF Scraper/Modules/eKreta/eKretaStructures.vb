@@ -1,4 +1,4 @@
-﻿Public Module eKretaStructures
+﻿Module eKretaStructures
     Structure eKretaInstitute
         Dim InstituteID As ULong
         Dim InstituteCode As String
@@ -29,6 +29,15 @@
         Dim Hatarido As Date
         Dim IsTanuloHaziFeladatEnabled As Boolean
         Dim StudentHomeworks As List(Of StudentHomework) 'Kommentek
+
+        Public Sub New(homework As Common.Struct.Homework) 'Only for sendhomework
+            ID = homework.HomeworkID
+            Tantargy = homework.Subject
+            Rogzito = homework.Sender
+            Szoveg = homework.HomeworkText
+            FeladasDatuma = homework.myDate
+            Hatarido = homework.myDeadlineDate
+        End Sub
     End Structure
     Structure StudentHomework '= Komment
         Dim Id As ULong

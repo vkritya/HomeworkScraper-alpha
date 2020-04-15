@@ -1,4 +1,4 @@
-﻿Public Class SchoolDay
+﻿Class SchoolDay
 
     Private myMainForm As MainForm
 

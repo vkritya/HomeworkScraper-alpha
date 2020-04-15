@@ -1,11 +1,17 @@
 ﻿Imports mshtml
 Imports System.Text.RegularExpressions
-Public Class StudentHomeworkReplyForm
-    Private myParent As HomeworkDetail
+Class StudentHomeworkReplyForm
+
+    Private myParent As Object
+
+    Public Sub New(parent As TimetableHomeworkDetail)
+        myParent = parent
+        InitializeComponent()
+    End Sub
 
     Public Sub New(parent As HomeworkDetail)
-        InitializeComponent()
         myParent = parent
+        InitializeComponent()
     End Sub
 
     Private Sub myWebBrowserDocumentCompleted() Handles myWebBrowser.DocumentCompleted
@@ -222,9 +228,14 @@ Public Class StudentHomeworkReplyForm
 
     Private Sub SendButtonClick() Handles SendButton.Click
         If MessageBox.Show("Biztos el szeretnéd küldeni az üzenetet?", "Megerősítés szükséges", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-            'eKreta.sendStudentHomework(myParent.getHomework, convertToHTML5(myWebBrowser.Document.Body.InnerHtml))
-
-            'Me.Close()
+            If TypeOf myParent.getHomework Is eKretaHomework Then
+                eKreta.sendStudentHomework(myParent.getHomework, convertToHTML5(myWebBrowser.Document.Body.InnerHtml))
+            Else
+                Select Case myParent.gethomework.service
+                    Case Common.Struct.ServiceType.eKretaHomework
+                        eKreta.sendStudentHomework(New eKretaHomework(myParent.getHomework), convertToHTML5(myWebBrowser.Document.Body.InnerHtml))
+                End Select
+            End If
             Me.DialogResult = DialogResult.OK
         End If
     End Sub

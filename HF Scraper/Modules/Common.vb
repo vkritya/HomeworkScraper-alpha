@@ -46,15 +46,19 @@
 
             Dim myDate As Date
             Dim Sender As String
+            Dim Subject As String
             Dim HomeworkText As String
             Dim myDeadlineDate As Date
 
             Dim Comments As List(Of Comment)
             Dim Attachment As Object
 
-            Sub New(fromMessage As Message, deadline As Date)
+            Sub New(fromMessage As Message, deadline As Date, subject As String)
                 Service = fromMessage.Service
                 HomeworkID = fromMessage.MessageID
+                myDate = fromMessage.myDate
+                Sender = fromMessage.Sender
+                subject = subject
                 HomeworkText = fromMessage.MessageText
                 myDeadlineDate = deadline
                 Comments = fromMessage.Comments

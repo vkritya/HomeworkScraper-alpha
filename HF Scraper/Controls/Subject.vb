@@ -1,4 +1,4 @@
-﻿Public Class Subject
+﻿Class Subject
     Private myLesson As eKretaLesson? = Nothing
     Private myMainForm As MainForm
 

@@ -1,9 +1,18 @@
-﻿Public Class StudentHomeworkView
+﻿Class StudentHomeworkView
     Public Sub New(homework As StudentHomework, initialWidth As Integer)
         InitializeComponent()
         myWebBrowser.DocumentText = Net.WebUtility.HtmlDecode(homework.FeladatSzovege)
         NameLabel.Text = homework.TanuloNev
         TimeLabel.Text = homework.FeladasDatuma.ToString(Common.Constant.FORMAT_YMD_HMS)
+
+        Me.Anchor = AnchorStyles.Top Or AnchorStyles.Left
+        Me.Width = initialWidth
+    End Sub
+    Public Sub New(homework As Common.Struct.Comment, initialWidth As Integer)
+        InitializeComponent()
+        myWebBrowser.DocumentText = Net.WebUtility.HtmlDecode(homework.CommentText)
+        NameLabel.Text = homework.Sender
+        TimeLabel.Text = homework.myDate.ToString(Common.Constant.FORMAT_YMD_HMS)
 
         Me.Anchor = AnchorStyles.Top Or AnchorStyles.Left
         Me.Width = initialWidth

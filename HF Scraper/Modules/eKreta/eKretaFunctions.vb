@@ -59,6 +59,7 @@ Namespace eKreta
                 Next
             End If
 
+            myHttpWebRequest.Accept = "application/json"
             myHttpWebRequest.UserAgent = "Kreta ()"
             myHttpWebRequest.ContentType = contentType
 
@@ -307,19 +308,19 @@ Namespace eKreta
         End Structure
         Private Structure StudentHomeworkPayload
             Dim TanarHaziFeladatId As String
-            Dim OraId As ULong
-            Dim OraDate As String
-            Dim OraType As String
+            'Dim OraId As ULong
+            'Dim OraDate As String
+            'Dim OraType As String
             Dim FeladatSzovege As String
-            Dim Hatarido As String
+            'Dim Hatarido As String
 
             Sub New(tanarHFID As String, oraID As ULong, szoveg As String, feladasiDate As String, hatarido As String)
                 TanarHaziFeladatId = tanarHFID
-                Me.OraId = oraID
-                OraDate = feladasiDate
-                OraType = "TanitasiOra"
+                'Me.OraId = oraID
+                'OraDate = feladasiDate
+                'OraType = "TanitasiOra"
                 FeladatSzovege = szoveg
-                Me.Hatarido = hatarido
+                'Me.Hatarido = hatarido
             End Sub
         End Structure
 
@@ -328,7 +329,7 @@ Namespace eKreta
             'Start Requests in parallel
             For Each lesson In Await getLessonRangeUpdate(fromDate, toDate)
                 If lesson.TeacherHomeworkID <> 0 Then
-                    myHomeworkTaskList.Add(getHomeworkByID(lesson.TeacherHomeworkID))
+                    myHomeworkTaskList.Add(getHomeworkByIDUpdate(lesson.TeacherHomeworkID))
                 End If
             Next
 
@@ -387,10 +388,10 @@ Namespace eKreta
         Public Sub sendStudentHomework(homework As eKretaHomework, szoveg As String)
             Dim myStudentHomeworkPayload As StudentHomeworkPayload
             myStudentHomeworkPayload.FeladatSzovege = szoveg
-            myStudentHomeworkPayload.Hatarido = homework.Hatarido
-            myStudentHomeworkPayload.OraDate = Format.formatDateTime(homework.FeladasDatuma)
-            myStudentHomeworkPayload.OraId = homework.TanitasiOraId
-            myStudentHomeworkPayload.OraType = "TanitasiOra"
+            'myStudentHomeworkPayload.Hatarido = homework.Hatarido
+            'myStudentHomeworkPayload.OraDate = Format.formatDateTime(homework.FeladasDatuma)
+            'myStudentHomeworkPayload.OraId = homework.TanitasiOraId
+            'myStudentHomeworkPayload.OraType = "TanitasiOra"
             myStudentHomeworkPayload.TanarHaziFeladatId = homework.ID
 
             Dim str = JsonConvert.SerializeObject(myStudentHomeworkPayload)

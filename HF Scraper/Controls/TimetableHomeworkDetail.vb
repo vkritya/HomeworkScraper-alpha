@@ -1,14 +1,13 @@
-﻿Class HomeworkDetail
-    Dim myHomework As Common.Struct.Homework
+﻿Class TimetableHomeworkDetail
+    Dim myHomework As eKretaHomework
     Private LOCKED As Boolean = False
     Private WithEvents myStudentHomeworkReplyForm As StudentHomeworkReplyForm
 
-    Function getHomework() As Common.Struct.Homework
+    Public Function getHomework() As eKretaHomework
         Return myHomework
     End Function
 
-    'TODO MODIFY
-    Sub setHomework(homework As Common.Struct.Homework?)
+    Public Sub setHomework(homework As eKretaHomework?)
         If Not LOCKED Then
             If myStudentHomeworkReplyForm IsNot Nothing Then
                 myStudentHomeworkReplyForm = Nothing
@@ -24,19 +23,19 @@
                 'Clear StudentHomeworks
                 StudentHomeworkFlowLayoutPanel.Controls.Clear()
                 'Set Data
-                SubjectLabel.Text = homework.Value.Subject.ToUpper
-                DeadlineLabel.Text = "HATÁRIDŐ: " & homework.Value.myDeadlineDate.ToString(Common.Constant.FORMAT_YMD)
-                SenderLabel.Text = homework.Value.Sender
-                SentDateLabel.Text = homework.Value.myDate.ToString(Common.Constant.FORMAT_YMD)
-                SendButton.Enabled = homework.Value.Comments IsNot Nothing
+                SubjectLabel.Text = homework.Value.Tantargy.ToUpper
+                DeadlineLabel.Text = "HATÁRIDŐ: " & homework.Value.Hatarido.ToString(Common.Constant.FORMAT_YMD)
+                SenderLabel.Text = homework.Value.Rogzito
+                SentDateLabel.Text = homework.Value.FeladasDatuma.ToString(Common.Constant.FORMAT_YMD)
+                SendButton.Enabled = homework.Value.IsTanuloHaziFeladatEnabled
                 triggerNavigate = False
-                ContentWebBrowser.DocumentText = homework.Value.HomeworkText.Replace("target=""_blank""", "target=""_self""")
+                ContentWebBrowser.DocumentText = homework.Value.Szoveg.Replace("target=""_blank""", "target=""_self""")
                 'Add StudentHomeworks
-                If homework.Value.Comments IsNot Nothing Then
-                    setStudentHomeworks(homework.Value.Comments)
+                If homework.Value.IsTanuloHaziFeladatEnabled Then
+                    setStudentHomeworks(homework.Value.StudentHomeworks)
                 End If
             Else
-                myHomework = New Common.Struct.Homework
+                myHomework = New eKretaHomework
                 'Hide everything
                 SubjectLabel.Text = ""
                 DeadlineLabel.Text = ""
@@ -49,15 +48,15 @@
             End If
         End If
     End Sub
-    Private Sub setStudentHomeworks(comments As List(Of Common.Struct.Comment))
+
+    Private Sub setStudentHomeworks(homeworks As List(Of StudentHomework))
         StudentHomeworkFlowLayoutPanel.AutoScroll = False
-        For Each comment In comments
-            Dim myStudentHomeworkView = New StudentHomeworkView(comment, StudentHomeworkFlowLayoutPanel.Width - 6)
+        For Each homework In homeworks
+            Dim myStudentHomeworkView = New StudentHomeworkView(homework, StudentHomeworkFlowLayoutPanel.Width - 6)
             StudentHomeworkFlowLayoutPanel.Controls.Add(myStudentHomeworkView)
         Next
         StudentHomeworkFlowLayoutPanel.AutoScroll = True
     End Sub
-
     Private Sub passResize() Handles StudentHomeworkFlowLayoutPanel.Resize
         If StudentHomeworkFlowLayoutPanel.VerticalScroll.Visible Then
             For Each control As StudentHomeworkView In StudentHomeworkFlowLayoutPanel.Controls
@@ -81,7 +80,7 @@
         End If
     End Sub
 
-    Private Sub SendButtonClick() Handles SendButton.Click
+    Private Async Sub SendButtonClick() Handles SendButton.Click
         If myStudentHomeworkReplyForm Is Nothing Then
             myStudentHomeworkReplyForm = New StudentHomeworkReplyForm(Me)
         End If
@@ -94,7 +93,7 @@
         If myStudentHomeworkReplyForm.DialogResult = DialogResult.OK Then
             myStudentHomeworkReplyForm = New StudentHomeworkReplyForm(Me)
             LOCKED = False
-            'TODO Update Homework
+            setHomework(Await eKreta.getHomeworkByIDUpdate(myHomework.ID))
         End If
         SendButton.Enabled = True
         LOCKED = False

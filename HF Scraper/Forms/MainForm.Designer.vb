@@ -43,7 +43,7 @@ Partial Class MainForm
         Me.DecrementWeekButton = New System.Windows.Forms.Button()
         Me.IncrementWeekButton = New System.Windows.Forms.Button()
         Me.mySchoolWeek = New HF_Scraper.SchoolWeek()
-        Me.myHomeworkDetail = New HF_Scraper.HomeworkDetail()
+        Me.myHomeworkDetail = New HF_Scraper.TimetableHomeworkDetail()
         Me.MessagesTabPage = New System.Windows.Forms.TabPage()
         Me.MessagesSplitContainer = New System.Windows.Forms.SplitContainer()
         Me.MessagesListView = New System.Windows.Forms.ListView()
@@ -68,6 +68,7 @@ Partial Class MainForm
         Me.myToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.myStatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ProgressToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.HomeworksHomeworkDetail = New HF_Scraper.HomeworkDetail()
         Me.myTabControl.SuspendLayout()
         Me.TimetableTabPage.SuspendLayout()
         CType(Me.TimetableSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -200,9 +201,9 @@ Partial Class MainForm
         Me.myHomeworkDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.myHomeworkDetail.Location = New System.Drawing.Point(1, 0)
+        Me.myHomeworkDetail.Location = New System.Drawing.Point(0, 0)
         Me.myHomeworkDetail.Name = "myHomeworkDetail"
-        Me.myHomeworkDetail.Size = New System.Drawing.Size(223, 474)
+        Me.myHomeworkDetail.Size = New System.Drawing.Size(227, 474)
         Me.myHomeworkDetail.TabIndex = 5
         Me.myHomeworkDetail.TabStop = False
         '
@@ -305,10 +306,10 @@ Partial Class MainForm
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MessagesTimeSpanPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.MessagesTimeSpanPicker.HomeworkDeadline = Nothing
-        Me.MessagesTimeSpanPicker.Location = New System.Drawing.Point(1, 401)
+        Me.MessagesTimeSpanPicker.Location = New System.Drawing.Point(0, 401)
         Me.MessagesTimeSpanPicker.MinimumSize = New System.Drawing.Size(154, 73)
         Me.MessagesTimeSpanPicker.Name = "MessagesTimeSpanPicker"
-        Me.MessagesTimeSpanPicker.Size = New System.Drawing.Size(332, 73)
+        Me.MessagesTimeSpanPicker.Size = New System.Drawing.Size(334, 73)
         Me.MessagesTimeSpanPicker.TabIndex = 3
         '
         'HomeworkTabPage
@@ -340,6 +341,7 @@ Partial Class MainForm
         'HomeworksSplitContainer.Panel2
         '
         Me.HomeworksSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control
+        Me.HomeworksSplitContainer.Panel2.Controls.Add(Me.HomeworksHomeworkDetail)
         Me.HomeworksSplitContainer.Panel2.Controls.Add(Me.RequestTypeCheckBox)
         Me.HomeworksSplitContainer.Panel2.Controls.Add(Me.HomeworkTimeSpanPicker)
         Me.HomeworksSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default
@@ -421,7 +423,7 @@ Partial Class MainForm
         Me.RequestTypeCheckBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RequestTypeCheckBox.AutoSize = True
         Me.RequestTypeCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.RequestTypeCheckBox.Location = New System.Drawing.Point(157, 382)
+        Me.RequestTypeCheckBox.Location = New System.Drawing.Point(158, 382)
         Me.RequestTypeCheckBox.Margin = New System.Windows.Forms.Padding(0)
         Me.RequestTypeCheckBox.Name = "RequestTypeCheckBox"
         Me.RequestTypeCheckBox.Size = New System.Drawing.Size(172, 17)
@@ -439,11 +441,11 @@ Partial Class MainForm
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.HomeworkTimeSpanPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.HomeworkTimeSpanPicker.HomeworkDeadline = Me.RequestTypeCheckBox
-        Me.HomeworkTimeSpanPicker.Location = New System.Drawing.Point(1, 401)
+        Me.HomeworkTimeSpanPicker.Location = New System.Drawing.Point(0, 401)
         Me.HomeworkTimeSpanPicker.Margin = New System.Windows.Forms.Padding(0)
         Me.HomeworkTimeSpanPicker.MinimumSize = New System.Drawing.Size(154, 73)
         Me.HomeworkTimeSpanPicker.Name = "HomeworkTimeSpanPicker"
-        Me.HomeworkTimeSpanPicker.Size = New System.Drawing.Size(332, 73)
+        Me.HomeworkTimeSpanPicker.Size = New System.Drawing.Size(334, 73)
         Me.HomeworkTimeSpanPicker.TabIndex = 3
         '
         'myToolStrip
@@ -480,6 +482,16 @@ Partial Class MainForm
         Me.ProgressToolStripStatusLabel.Name = "ProgressToolStripStatusLabel"
         Me.ProgressToolStripStatusLabel.Size = New System.Drawing.Size(120, 17)
         Me.ProgressToolStripStatusLabel.Text = "ToolStripStatusLabel1"
+        '
+        'HomeworksHomeworkDetail
+        '
+        Me.HomeworksHomeworkDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.HomeworksHomeworkDetail.Location = New System.Drawing.Point(0, 0)
+        Me.HomeworksHomeworkDetail.Name = "HomeworksHomeworkDetail"
+        Me.HomeworksHomeworkDetail.Size = New System.Drawing.Size(336, 379)
+        Me.HomeworksHomeworkDetail.TabIndex = 8
         '
         'MainForm
         '
@@ -532,7 +544,7 @@ Partial Class MainForm
     Friend WithEvents TimetableSplitContainer As SplitContainer
     Friend WithEvents MessagesSplitContainer As SplitContainer
     Friend WithEvents MessagesTimeSpanPicker As TimeSpanPicker
-    Friend WithEvents myHomeworkDetail As HomeworkDetail
+    Friend WithEvents myHomeworkDetail As TimetableHomeworkDetail
     Friend WithEvents myToolTip As ToolTip
     Friend WithEvents myStatusStrip As StatusStrip
     Friend WithEvents HomeworkTabPage As TabPage
@@ -551,4 +563,5 @@ Partial Class MainForm
     Friend WithEvents DecrementWeekButton As Button
     Friend WithEvents IncrementWeekButton As Button
     Friend WithEvents HomeworksTextColumnHeader As ColumnHeader
+    Friend WithEvents HomeworksHomeworkDetail As HomeworkDetail
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class InstitutePicker
+﻿Class InstitutePicker
 
     Property myInstitute As eKretaInstitute
     Dim myInstitutes As New List(Of eKretaInstitute)
