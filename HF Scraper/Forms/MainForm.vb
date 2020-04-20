@@ -57,7 +57,7 @@
         End Try
     End Function
 
-    Public Async Sub OpenHomeworkDetails(subjectControl As Subject, homeworkID As ULong)
+    Public Async Sub OpenHomeworkDetails(subjectControl As Subject, homeworkID As Long)
         myHomeworkDetail.setHomework(Nothing)
         myHomeworkDetail.setHomework(Await eKreta.getHomeworkByIDUpdate(homeworkID))
     End Sub
@@ -170,34 +170,37 @@
 
 
         Try
-            For Each eKretaHomework In Await eKretaHomeworkTask
-                Dim myHomework As Common.Struct.Homework
-                myHomework.Service = Common.Struct.ServiceType.eKretaHomework
-                myHomework.HomeworkID = eKretaHomework.ID
-                myHomework.myDate = eKretaHomework.FeladasDatuma
-                myHomework.myDeadlineDate = eKretaHomework.Hatarido
-                myHomework.Subject = eKretaHomework.Tantargy
-                myHomework.Sender = eKretaHomework.Rogzito
-                myHomework.HomeworkText = eKretaHomework.Szoveg
-                myHomework.Attachment = Nothing
+            Dim homeworks As List(Of eKretaHomework) = Await eKretaHomeworkTask
+            If homeworks IsNot Nothing Then
+                For Each eKretaHomework In homeworks
+                    Dim myHomework As Common.Struct.Homework
+                    myHomework.Service = Common.Struct.ServiceType.eKretaHomework
+                    myHomework.HomeworkID = eKretaHomework.ID
+                    myHomework.myDate = eKretaHomework.FeladasDatuma
+                    myHomework.myDeadlineDate = eKretaHomework.Hatarido
+                    myHomework.Subject = eKretaHomework.Tantargy
+                    myHomework.Sender = eKretaHomework.Rogzito
+                    myHomework.HomeworkText = eKretaHomework.Szoveg
+                    myHomework.Attachment = Nothing
 
-                If eKretaHomework.IsTanuloHaziFeladatEnabled Then
-                    myHomework.Comments = New List(Of Common.Struct.Comment)
-                    For Each comment In eKretaHomework.StudentHomeworks
-                        Dim myComment As Common.Struct.Comment
-                        myComment.CommentID = comment.Id
-                        myComment.CommentText = comment.FeladatSzovege
-                        myComment.myDate = comment.FeladasDatuma
-                        myComment.Sender = comment.TanuloNev
-                        myComment.Attachment = Nothing
-                        myHomework.Comments.Add(myComment)
-                    Next
-                Else
-                    myHomework.Comments = Nothing
-                End If
-                'Add to ListView
-                addHomework(myHomework)
-            Next
+                    If eKretaHomework.IsTanuloHaziFeladatEnabled Then
+                        myHomework.Comments = New List(Of Common.Struct.Comment)
+                        For Each comment In eKretaHomework.StudentHomeworks
+                            Dim myComment As Common.Struct.Comment
+                            myComment.CommentID = comment.Id
+                            myComment.CommentText = comment.FeladatSzovege
+                            myComment.myDate = comment.FeladasDatuma
+                            myComment.Sender = comment.TanuloNev
+                            myComment.Attachment = Nothing
+                            myHomework.Comments.Add(myComment)
+                        Next
+                    Else
+                        myHomework.Comments = Nothing
+                    End If
+                    'Add to ListView
+                    addHomework(myHomework)
+                Next
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

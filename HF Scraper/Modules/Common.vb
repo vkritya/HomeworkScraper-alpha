@@ -21,7 +21,7 @@
 
         Structure Message
             Dim Service As ServiceType
-            Dim MessageID As ULong
+            Dim MessageID As Long
 
             Dim myDate As Date
             Dim Sender As String
@@ -31,7 +31,7 @@
             Dim Attachment As Object
         End Structure
         Structure Comment
-            Dim CommentID As ULong
+            Dim CommentID As Long
             Dim myDate As Date
 
             Dim Sender As String
@@ -42,7 +42,7 @@
 
         Structure Homework
             Dim Service As ServiceType
-            Dim HomeworkID As ULong
+            Dim HomeworkID As Long
 
             Dim myDate As Date
             Dim Sender As String

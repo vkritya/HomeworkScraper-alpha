@@ -103,10 +103,10 @@ Namespace eKreta
         End Function
 
 #Region "Institute"
-        Private myInstitutes As New Dictionary(Of ULong, eKretaInstitute)
+        Private myInstitutes As New Dictionary(Of Long, eKretaInstitute)
 
         Private Structure InstituteResponse
-            Dim InstituteId As ULong
+            Dim InstituteId As Long
             Dim InstituteCode As String
             Dim Name As String
             Dim Url As String
@@ -115,7 +115,7 @@ Namespace eKreta
             Dim FeatureToggleSet As Dictionary(Of String, String)
         End Structure
 
-        Async Function getInstituteByID(instituteID As ULong) As Task(Of eKretaInstitute)
+        Async Function getInstituteByID(instituteID As Long) As Task(Of eKretaInstitute)
             If myInstitutes.Count > 0 Then
                 Return myInstitutes(instituteID)
             End If
@@ -213,12 +213,12 @@ Namespace eKreta
 #End Region
 
 #Region "Lessons"
-        Private myLessons As New Dictionary(Of ULong, eKretaLesson)
+        Private myLessons As New Dictionary(Of Long, eKretaLesson)
 
         Private Structure LessonResponse
-            Dim LessonID As ULong
+            Dim LessonID As Long
             Dim CalendarOraType As String
-            Dim Count As ULong
+            Dim Count As Long
             Dim [Date] As String
             Dim StartTime As String
             Dim EndTime As String
@@ -234,9 +234,9 @@ Namespace eKreta
             Dim StateName As String
             Dim PresenceType As String
             Dim PresenceTypeName As String
-            Dim TeacherHomeworkID As ULong
+            Dim TeacherHomeworkID As Long
             Dim IsTanuloHaziFeladatEnabled As Boolean
-            Dim BejelentettSzamonkeresIDList As List(Of ULong)
+            Dim BejelentettSzamonkeresIDList As List(Of Long)
             Dim Theme As String
             Dim Nev As String
             Dim Homework As String
@@ -280,41 +280,42 @@ Namespace eKreta
 #End Region
 
 #Region "Homeworks"
-        Private myHomeworks As New Dictionary(Of ULong, eKretaHomework)
+        Private myHomeworks As New Dictionary(Of Long, eKretaHomework)
 
         Private Structure TeacherHomeworkResponse
             Dim Uid As String
-            Dim Id As ULong
+            Dim Id As Long
             Dim OsztalyCsoportUid As String
             Dim Tantargy As String
             Dim Rogzito As String
             Dim IsTanarRogzitette As Boolean
-            Dim Oraszam As ULong
-            Dim TanitasiOraId As ULong
+            Dim Oraszam As Long
+            Dim TanitasiOraId As Long
             Dim Szoveg As String
             Dim FeladasDatuma As String
             Dim Hatarido As String
+            Dim RogzitesIdopontja As String
             Dim IsTanuloHaziFeladatEnabled As Boolean
         End Structure
         Private Structure StudentHomeworkResponse
             Dim Uid As String
-            Dim Id As ULong
+            Dim Id As Long
             Dim TanuloNev As String
             Dim FeladasDatuma As String
             Dim FeladatSzovege As String
-            Dim RogzitoId As ULong
+            Dim RogzitoId As Long
             Dim TanuloAltalTorolt As Boolean
             Dim TanarAltalTorolt As Boolean
         End Structure
         Private Structure StudentHomeworkPayload
             Dim TanarHaziFeladatId As String
-            'Dim OraId As ULong
+            'Dim OraId As Long
             'Dim OraDate As String
             'Dim OraType As String
             Dim FeladatSzovege As String
             'Dim Hatarido As String
 
-            Sub New(tanarHFID As String, oraID As ULong, szoveg As String, feladasiDate As String, hatarido As String)
+            Sub New(tanarHFID As String, oraID As Long, szoveg As String, feladasiDate As String, hatarido As String)
                 TanarHaziFeladatId = tanarHFID
                 'Me.OraId = oraID
                 'OraDate = feladasiDate
@@ -342,13 +343,13 @@ Namespace eKreta
             Return outList
         End Function
 
-        Public Async Function getHomeworkByID(homeworkID As ULong) As Task(Of eKretaHomework)
+        Public Async Function getHomeworkByID(homeworkID As Long) As Task(Of eKretaHomework)
             If myHomeworks.ContainsKey(homeworkID) Then
                 Return myHomeworks(homeworkID)
             End If
             Return Await getHomeworkByIDUpdate(homeworkID)
         End Function
-        Public Async Function getHomeworkByIDUpdate(homeworkID As ULong) As Task(Of eKretaHomework)
+        Public Async Function getHomeworkByIDUpdate(homeworkID As Long) As Task(Of eKretaHomework)
             Dim myTeacherHomeworkResponseTask = myGETRequest(Of TeacherHomeworkResponse)($"{myInstitute.Url}/mapi/api/v1/HaziFeladat/TanarHaziFeladat/{homeworkID}", New Dictionary(Of String, String) From {{"Authorization", $"Bearer {getAccessToken()}"}})
             Dim myStudentHomeworkResponseTask = myGETRequest(Of List(Of StudentHomeworkResponse))($"{myInstitute.Url}/mapi/api/v1/HaziFeladat/TanuloHaziFeladatLista/{homeworkID}", New Dictionary(Of String, String) From {{"Authorization", $"Bearer {getAccessToken()}"}})
             Return formatHomeworkResponse(Await myTeacherHomeworkResponseTask, Await myStudentHomeworkResponseTask)
@@ -400,17 +401,17 @@ Namespace eKreta
 #End Region
 
 #Region "Messages (e-Ügyintézés)"
-        Private myMessages As New Dictionary(Of ULong, eKretaMessage)
+        Private myMessages As New Dictionary(Of Long, eKretaMessage)
 
         Private Structure MessageResponse
-            Dim azonosito As ULong
+            Dim azonosito As Long
             Dim isElolvasva As Boolean
             Dim isToroltElem As Boolean
             Dim tipus As Tipus
             Dim uzenet As Uzenet
         End Structure
         Private Structure Uzenet
-            Dim azonosito As ULong
+            Dim azonosito As Long
             Dim kuldesDatum As String
             Dim feladoNev As String
             Dim feladoTitulus As String
@@ -420,13 +421,13 @@ Namespace eKreta
             Dim csatolmanyok As List(Of eKretaFajl)
         End Structure
         Private Structure Cimzett
-            Dim azonosito As ULong
-            Dim kretaAzonosito As ULong
+            Dim azonosito As Long
+            Dim kretaAzonosito As Long
             Dim nev As String
             Dim tipus As Tipus
         End Structure
         Private Structure Tipus
-            Dim azonosito As ULong
+            Dim azonosito As Long
             Dim kod As String
             Dim rovidNev As String
             Dim nev As String
@@ -456,7 +457,7 @@ Namespace eKreta
                 Return Await getMessagesUpdate()
             End If
         End Function
-        Public Async Function getMessageByID(messageID As ULong) As Task(Of eKretaMessage)
+        Public Async Function getMessageByID(messageID As Long) As Task(Of eKretaMessage)
             If myMessages.ContainsKey(messageID) Then
                 Return myMessages(messageID)
             Else
@@ -464,11 +465,11 @@ Namespace eKreta
             End If
             Return Nothing
         End Function
-        Public Async Function getMessageByIDUpdate(messageID As ULong) As Task(Of eKretaMessage)
+        Public Async Function getMessageByIDUpdate(messageID As Long) As Task(Of eKretaMessage)
             Return Await getMessageByIDPrivate(messageID, getAccessToken())
         End Function
 
-        Private Async Function getMessageByIDPrivate(messageID As ULong, accessToken As String) As Task(Of eKretaMessage)
+        Private Async Function getMessageByIDPrivate(messageID As Long, accessToken As String) As Task(Of eKretaMessage)
             Dim myMessageResponse = Await myGETRequest(Of MessageResponse)($"https://eugyintezes.e-kreta.hu/integration-kretamobile-api/v1/kommunikacio/postaladaelemek/{messageID}", New Dictionary(Of String, String) From {{"Authorization", $"Bearer {accessToken}"}})
             'Keep important things only
             Dim myMessage As eKretaMessage
@@ -624,48 +625,53 @@ Namespace eKreta
             Dim AggregateResults As String
             Dim Data As List(Of WebAPIHomework)
             Dim Errors As String
-            Dim Total As ULong
+            Dim Total As Long
         End Structure
         Private Structure WebAPIHomework
-            Dim ID As ULong
-            Dim TantargyId As ULong
+            Dim ID As Long
+            Dim TantargyId As Long
             Dim TantargyNev As String
             Dim isTanitasiOra As String
-            Dim EventId As ULong
-            Dim TanitasiOraId As ULong
+            Dim EventId As Long
+            Dim TanitasiOraId As Long
             Dim TanarNeve As String
             Dim HelyettesitoNev As String
             Dim HaziFeladaSzoveg As String
             Dim HaziFeladatRogzitesDatuma As String
             Dim HaziFeladatTenylegesRogzitesDatuma As String
             Dim HaziFeladatHatarido As String
-            Dim HaziFeladatId As ULong
-            Dim HaziFeladatRogzitoId As ULong
+            Dim HaziFeladatId As Long
+            Dim HaziFeladatRogzitoId As Long
             Dim IsTanarRogzitette As String
             Dim OsztalyCsoport As String
-            Dim OsztalyCsoportId As ULong
-            Dim Oraszam As ULong
+            Dim OsztalyCsoportId As Long
+            Dim Oraszam As Long
             Dim MegoldottHF As String
             Dim isTanitasiOra_BOOL As Boolean
             Dim isTanitasiOra_BNAME As String
         End Structure
 
         Public Async Function getHomeworksByDeadline(fromDate As Date, toDate As Date) As Task(Of List(Of eKretaHomework))
-            Dim myHttpWebResponse = Await WebAPIGETRequest($"{myInstitute.Url}/api/TanuloHaziFeladatApi/GetTanulotHaziFeladatGrid?data={{""HaziFeladatHataridoKezdoDatum""%3A""{fromDate.ToString("yyyy.+MM.+dd.")}""%2C""HaziFeladatHatairdo""%3A""{toDate.ToString("yyyy.+MM.+dd.")}""%2C""RegiHaziFeladatokElrejtese""%3Afalse%2C""ElkeszitettHaziFeladatokElrejtese""%3Afalse}}", Await getAuthCookie())
+            Dim authCookies As CookieCollection = Await getAuthCookie()
+            If authCookies IsNot Nothing Then
+                Dim myHttpWebResponse = Await WebAPIGETRequest($"{myInstitute.Url}/api/TanuloHaziFeladatApi/GetTanulotHaziFeladatGrid?data={{""HaziFeladatHataridoKezdoDatum""%3A""{fromDate.ToString("yyyy.+MM.+dd.")}""%2C""HaziFeladatHatairdo""%3A""{toDate.ToString("yyyy.+MM.+dd.")}""%2C""RegiHaziFeladatokElrejtese""%3Afalse%2C""ElkeszitettHaziFeladatokElrejtese""%3Afalse}}", authCookies)
 
-            Dim myWebAPIHomeworkResponse = myDeserialize(Of WebAPIHomeworkResponse)(New IO.StreamReader(myHttpWebResponse.GetResponseStream).ReadToEnd)
+                Dim myWebAPIHomeworkResponse = myDeserialize(Of WebAPIHomeworkResponse)(New IO.StreamReader(myHttpWebResponse.GetResponseStream).ReadToEnd)
 
-            Dim myHomeworkTaskList As New List(Of Task(Of eKretaHomework))
-            For Each homeworkResponse In myWebAPIHomeworkResponse.Data
-                myHomeworkTaskList.Add(getHomeworkByIDUpdate(homeworkResponse.HaziFeladatId))
-            Next
+                Dim myHomeworkTaskList As New List(Of Task(Of eKretaHomework))
+                For Each homeworkResponse In myWebAPIHomeworkResponse.Data
+                    myHomeworkTaskList.Add(getHomeworkByIDUpdate(homeworkResponse.HaziFeladatId))
+                Next
 
-            Dim outlist As New List(Of eKretaHomework)
-            For Each homeworkTask In myHomeworkTaskList
-                outlist.Add(Await homeworkTask)
-            Next
+                Dim outlist As New List(Of eKretaHomework)
+                For Each homeworkTask In myHomeworkTaskList
+                    outlist.Add(Await homeworkTask)
+                Next
 
-            Return outlist
+                Return outlist
+            Else
+                Return Nothing
+            End If
         End Function
 
         Private Function myDeserialize(Of Type)(str As String) As Type

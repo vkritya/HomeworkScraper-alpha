@@ -1,7 +1,7 @@
 ﻿Imports System.Text.RegularExpressions
 Public Class TimeSpanPicker
 
-    Event FetchButtonClicked(fromDate As Date, toDate As Date) 'enabledServiceIDs As List(Of ULong)
+    Event FetchButtonClicked(fromDate As Date, toDate As Date) 'enabledServiceIDs As List(Of Long)
 
     Property HomeworkDeadline As CheckBox = Nothing
 
