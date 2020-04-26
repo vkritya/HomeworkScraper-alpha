@@ -1,3 +1,4 @@
+## ---A projekt kedvhiány miatt szünetel---
 # HomeworkScraper-alpha
 # e-Kréta, e-Mail, Facebook, Messenger, Google Classroom - lekérdező (lett volna) egy helyen
 
