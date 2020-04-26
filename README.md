@@ -1,5 +1,5 @@
 # HomeworkScraper-alpha
-# e-Kréta, e-Mail, Facebook, Messenger, Google Classroom - lekérdező (lesz) egy helyen
+# e-Kréta, e-Mail, Facebook, Messenger, Google Classroom - lekérdező (lett volna) egy helyen
 
 Óvatosan bánj mindennel, hibákat légyszíves jelezd felém és írd le, hogy pontosan mikre milyen sorrendben kattintottál.
 
